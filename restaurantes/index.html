@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vimex Marketing | Restaurantes que Faturam Mais</title>
+  <meta name="description" content="Marketing estratégico para restaurantes. Aumente seu faturamento e se posicione como referência na sua região. Diagnóstico gratuito!">
+  <meta property="og:title" content="Vimex Marketing | Seu restaurante lotado e sendo referência na região">
+  <meta property="og:description" content="Marketing estratégico para restaurantes. Diagnóstico gratuito para faturar mais.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:        #0c0c0c;
+      --dark-2:      #161616;
+      --dark-3:      #222222;
+      --dark-4:      #2a2a2a;
+      --orange:      #E8450A;
+      --orange-l:    #FF5C1F;
+      --gold:        #F5A623;
+      --green:       #25D366;
+      --white:       #FFFFFF;
+      --gray:        #888888;
+      --border:      rgba(255,255,255,0.08);
+      --font:        'Poppins', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--dark);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 { line-height: 1.15; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .sp { padding: 96px 0; }
+    .sp-sm { padding: 64px 0; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232,69,10,0.12);
+      color: var(--orange-l);
+      border: 1px solid rgba(232,69,10,0.25);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .tag-gold {
+      background: rgba(245,166,35,0.12);
+      color: var(--gold);
+      border-color: rgba(245,166,35,0.25);
+    }
+
+    .sec-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .sec-sub {
+      font-size: 17px;
+      color: #999;
+      line-height: 1.75;
+      max-width: 580px;
+    }
+
+    .hl  { color: var(--orange-l); }
+    .hl2 { color: var(--gold); }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 30px;
+      border-radius: 10px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all .25s ease;
+      white-space: nowrap;
+    }
+    .btn-orange { background: var(--orange); color: #fff; }
+    .btn-orange:hover { background: var(--orange-l); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(232,69,10,.45); }
+    .btn-green  { background: var(--green); color: #fff; }
+    .btn-green:hover  { background: #1fbe5b; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37,211,102,.4); }
+    .btn-gold   { background: var(--gold); color: #000; }
+    .btn-gold:hover   { background: #e09200; }
+    .btn-w { width: 100%; }
+    .btn-lg { padding: 18px 40px; font-size: 17px; }
+
+    /* ── NAVBAR ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 18px 0;
+      transition: all .3s;
+    }
+    .nav.stuck {
+      background: rgba(12,12,12,.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(255,255,255,.06);
+      padding: 12px 0;
+    }
+    .nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo img   { height: 38px; }
+    .nav-logo-text  { font-size: 22px; font-weight: 900; letter-spacing: .1em; }
+    .nav-cta { padding: 10px 22px; font-size: 14px; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      padding-top: 80px;
+      background: var(--dark);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 75% 45%, rgba(232,69,10,.13) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 10% 80%, rgba(232,69,10,.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-logo { margin-bottom: 20px; }
+    .hero-logo img { height: 54px; }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--orange-l);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 28px; height: 2px;
+      background: var(--orange);
+    }
+    .hero-title {
+      font-size: clamp(34px, 5vw, 58px);
+      font-weight: 900;
+      letter-spacing: -.025em;
+      line-height: 1.08;
+      margin-bottom: 22px;
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: #aaa;
+      line-height: 1.75;
+      margin-bottom: 36px;
+      max-width: 540px;
+    }
+    .hero-cta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .hero-wpp {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--green);
+      color: #fff;
+      padding: 18px 32px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      transition: all .25s;
+      align-self: flex-start;
+    }
+    .hero-wpp:hover { background: #1fbe5b; transform: translateY(-3px); box-shadow: 0 12px 30px rgba(37,211,102,.4); }
+    .hero-wpp i { font-size: 22px; }
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .hero-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      color: #777;
+    }
+    .hero-trust-item i { color: var(--green); font-size: 14px; }
+
+    /* FORM CARD */
+    .form-card {
+      background: rgba(255,255,255,.035);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 38px 34px;
+      backdrop-filter: blur(16px);
+    }
+    .form-head { margin-bottom: 22px; }
+    .form-head h3 { font-size: 20px; font-weight: 800; margin-bottom: 5px; }
+    .form-head p  { font-size: 13px; color: #777; }
+    .fg { margin-bottom: 14px; }
+    .fg label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #bbb;
+      letter-spacing: .03em;
+      margin-bottom: 6px;
+    }
+    .fg input, .fg select {
+      width: 100%;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 9px;
+      padding: 13px 16px;
+      color: #fff;
+      font-family: var(--font);
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .fg input::placeholder { color: #444; }
+    .fg input:focus { border-color: var(--orange); }
+    .form-submit {
+      width: 100%;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 15px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .25s;
+      margin-top: 4px;
+    }
+    .form-submit:hover { background: var(--orange-l); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(232,69,10,.4); }
+    .form-note {
+      text-align: center;
+      font-size: 12px;
+      color: #555;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .form-success { display: none; text-align: center; padding: 24px 12px; }
+    .form-success .fs-icon { font-size: 52px; color: var(--green); margin-bottom: 12px; }
+    .form-success h3 { font-size: 20px; margin-bottom: 8px; }
+    .form-success p { color: #888; font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
+
+    /* ── STATS BAR ── */
+    .stats { background: var(--orange); padding: 52px 0; }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      text-align: center;
+    }
+    .stat-n { font-size: 44px; font-weight: 900; line-height: 1; margin-bottom: 6px; }
+    .stat-l { font-size: 14px; opacity: .88; font-weight: 500; }
+
+    /* ── PAIN ── */
+    .pain { background: var(--dark-2); }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 52px;
+    }
+    .pain-card {
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 24px;
+      transition: border-color .3s, background .3s, transform .3s;
+    }
+    .pain-card:hover {
+      background: rgba(232,69,10,.04);
+      border-color: rgba(232,69,10,.2);
+      transform: translateY(-4px);
+    }
+    .pain-emoji { font-size: 36px; margin-bottom: 14px; }
+    .pain-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+    .pain-card p  { font-size: 14px; color: #888; line-height: 1.65; }
+
+    /* ── SOLUTION ── */
+    .solution { background: var(--dark); }
+    .solution-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .sol-list { list-style: none; margin-top: 28px; }
+    .sol-list li {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 22px;
+      align-items: flex-start;
+    }
+    .sol-check {
+      width: 30px; height: 30px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; flex-shrink: 0; margin-top: 2px;
+    }
+    .sol-list li h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .sol-list li p  { font-size: 13px; color: #888; line-height: 1.65; }
+    .sol-card {
+      background: var(--dark-3);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 40px 36px;
+    }
+    .sol-card-title { font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: .07em; font-weight: 700; margin-bottom: 10px; }
+    .sol-big { font-size: 30px; font-weight: 900; }
+    .sol-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .sol-stat-box {
+      background: rgba(232,69,10,.08);
+      border: 1px solid rgba(232,69,10,.14);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+    }
+    .sol-stat-box strong { display: block; font-size: 30px; font-weight: 900; color: var(--orange-l); }
+    .sol-stat-box span   { font-size: 12px; color: #888; line-height: 1.4; display: block; margin-top: 4px; }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--dark-2); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 60px;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 44px; left: calc(16.66% + 40px); right: calc(16.66% + 40px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--orange) 0%, var(--gold) 100%);
+    }
+    .step { text-align: center; }
+    .step-n {
+      width: 88px; height: 88px;
+      background: var(--orange);
+      border-radius: 50%;
+      font-size: 30px;
+      font-weight: 900;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 28px;
+      position: relative; z-index: 1;
+      box-shadow: 0 0 0 8px var(--dark-2), 0 0 0 10px rgba(232,69,10,.25);
+    }
+    .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .step p   { font-size: 14px; color: #888; line-height: 1.7; }
+
+    /* ── VICTOR ── */
+    .victor { background: var(--dark); }
+    .victor-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .victor-img-wrap { position: relative; }
+    .victor-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 22px;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid rgba(232,69,10,.25);
+    }
+    .victor-img-ph {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 22px;
+      background: var(--dark-3);
+      border: 3px solid rgba(232,69,10,.2);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 14px; color: #444;
+    }
+    .victor-img-ph i { font-size: 72px; }
+    .victor-img-ph span { font-size: 14px; }
+    .victor-badge {
+      position: absolute;
+      bottom: -18px; right: -18px;
+      background: var(--orange);
+      color: #fff;
+      border-radius: 16px;
+      padding: 14px 20px;
+      text-align: center;
+      line-height: 1.35;
+      box-shadow: 0 8px 28px rgba(232,69,10,.35);
+      font-size: 13px; font-weight: 700;
+    }
+    .victor-badge strong { display: block; font-size: 24px; }
+    .victor-name { font-size: 36px; font-weight: 900; margin: 18px 0 6px; letter-spacing: -.02em; }
+    .victor-role { color: var(--orange-l); font-size: 15px; font-weight: 600; margin-bottom: 20px; }
+    .victor-bio { color: #aaa; font-size: 15px; line-height: 1.8; margin-bottom: 28px; }
+    .victor-creds { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .victor-cred {
+      display: flex; gap: 12px; align-items: center;
+    }
+    .victor-cred i { color: var(--orange-l); font-size: 16px; width: 22px; flex-shrink: 0; }
+    .victor-cred span { font-size: 14px; color: #ccc; }
+    .victor-social { display: flex; gap: 10px; }
+    .vsoc-btn {
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      transition: all .25s;
+    }
+    .vsoc-btn:hover { background: var(--orange); border-color: var(--orange); }
+
+    /* ── TESTIMONIALS ── */
+    .proofs { background: var(--dark-2); }
+    .videos-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-bottom: 52px;
+    }
+    .vid-ph {
+      background: var(--dark-3);
+      border: 2px dashed rgba(255,255,255,.08);
+      border-radius: 18px;
+      aspect-ratio: 9/16;
+      max-height: 380px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px; color: #3a3a3a;
+    }
+    .vid-ph i { font-size: 44px; }
+    .vid-ph span { font-size: 13px; text-align: center; padding: 0 16px; line-height: 1.5; }
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .test-card {
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px 22px;
+    }
+    .test-stars { color: var(--gold); font-size: 17px; margin-bottom: 14px; }
+    .test-txt { font-size: 14px; color: #888; line-height: 1.7; font-style: italic; margin-bottom: 18px; }
+    .test-author { display: flex; align-items: center; gap: 12px; }
+    .test-av {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--dark-4);
+      border: 2px dashed rgba(255,255,255,.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: #444;
+    }
+    .test-author strong { display: block; font-size: 14px; }
+    .test-author span   { font-size: 12px; color: #555; }
+
+    /* ── CALENDAR SECTION ── */
+    .cal-sec {
+      background: linear-gradient(135deg, #0f0800, #1c0e00);
+      border-top: 1px solid rgba(245,166,35,.15);
+      border-bottom: 1px solid rgba(245,166,35,.15);
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 72px;
+      align-items: center;
+    }
+    .cal-icon-box {
+      width: 68px; height: 68px;
+      background: rgba(245,166,35,.1);
+      border: 2px solid rgba(245,166,35,.2);
+      border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 30px; margin-bottom: 18px;
+    }
+    .cal-title { font-size: clamp(26px, 3.5vw, 38px); font-weight: 900; margin-bottom: 14px; line-height: 1.15; }
+    .cal-desc  { font-size: 16px; color: #999; line-height: 1.75; }
+    .cal-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(245,166,35,.18);
+      border-radius: 22px;
+      padding: 36px 28px;
+      text-align: center;
+    }
+    .cal-card-emoji { font-size: 56px; margin-bottom: 14px; }
+    .cal-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+    .cal-card-sub { font-size: 13px; color: #777; margin-bottom: 22px; line-height: 1.5; }
+    .cal-checklist { list-style: none; margin-bottom: 24px; text-align: left; }
+    .cal-checklist li {
+      display: flex; gap: 10px; align-items: center;
+      font-size: 13px; color: #ccc;
+      margin-bottom: 10px;
+    }
+    .cal-checklist li i { color: var(--gold); font-size: 13px; flex-shrink: 0; }
+    .cal-free { font-size: 11px; color: #444; margin-top: 10px; }
+
+    /* ── FINAL CTA ── */
+    .fcta {
+      background: var(--dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .fcta::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(232,69,10,.14) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .fcta-inner { position: relative; z-index: 1; }
+    .fcta-title { font-size: clamp(32px, 4.5vw, 54px); font-weight: 900; letter-spacing: -.02em; margin-bottom: 16px; }
+    .fcta-sub   { font-size: 18px; color: #999; margin-bottom: 44px; }
+    .fcta-main-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--green);
+      color: #fff;
+      padding: 22px 48px;
+      border-radius: 14px;
+      font-size: 18px;
+      font-weight: 700;
+      transition: all .25s;
+      position: relative;
+    }
+    .fcta-main-btn:hover { background: #1fbe5b; transform: translateY(-3px); box-shadow: 0 14px 40px rgba(37,211,102,.4); }
+    .fcta-main-btn i { font-size: 26px; }
+    .pulse-dot {
+      position: absolute;
+      top: -5px; right: -5px;
+      width: 14px; height: 14px;
+      background: #ff4545;
+      border-radius: 50%;
+      animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: .6; }
+    }
+    .fcta-note { font-size: 14px; color: #444; margin-top: 18px; }
+    .fcta-guarantees {
+      display: flex;
+      justify-content: center;
+      gap: 56px;
+      flex-wrap: wrap;
+      margin-top: 64px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+    }
+    .guarantee { text-align: center; }
+    .guarantee-icon { font-size: 36px; margin-bottom: 10px; }
+    .guarantee-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+    .guarantee-sub   { font-size: 12px; color: #555; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #080808;
+      border-top: 1px solid rgba(255,255,255,.05);
+      padding: 56px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 56px;
+      margin-bottom: 44px;
+    }
+    .footer-logo img { height: 34px; margin-bottom: 14px; }
+    .footer-logo-text { font-size: 26px; font-weight: 900; letter-spacing: .1em; margin-bottom: 14px; }
+    .footer-desc { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 22px; }
+    .footer-soc { display: flex; gap: 10px; }
+    .footer-soc a {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,.05);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; transition: all .25s;
+    }
+    .footer-soc a:hover { background: var(--orange); }
+    .footer-col h4 {
+      font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .07em;
+      color: #666; margin-bottom: 18px;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { font-size: 14px; color: #555; transition: color .2s; }
+    .footer-links a:hover { color: var(--orange-l); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.04);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px; color: #3a3a3a;
+    }
+
+    /* ── FLOATING WHATSAPP ── */
+    .flt-wpp {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 9999;
+      display: flex; flex-direction: column;
+      align-items: flex-end; gap: 10px;
+    }
+    .flt-wpp-tip {
+      background: rgba(12,12,12,.95);
+      border: 1px solid rgba(255,255,255,.1);
+      color: #ddd;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(8px);
+      transition: all .25s;
+    }
+    .flt-wpp:hover .flt-wpp-tip { opacity: 1; transform: translateX(0); }
+    .flt-wpp-btn {
+      width: 62px; height: 62px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 30px; color: #fff;
+      box-shadow: 0 6px 24px rgba(37,211,102,.5);
+      position: relative;
+      transition: transform .25s;
+    }
+    .flt-wpp-btn:hover { transform: scale(1.08); }
+    .flt-wpp-btn::before {
+      content: '';
+      position: absolute; inset: -5px;
+      border-radius: 50%;
+      border: 2px solid rgba(37,211,102,.4);
+      animation: ripple 2s infinite;
+    }
+    @keyframes ripple {
+      0%   { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    /* ── FLOATING CALENDAR BANNER ── */
+    .flt-cal {
+      position: fixed;
+      bottom: 28px; left: 28px;
+      z-index: 9998;
+      background: linear-gradient(135deg, #181008, #241500);
+      border: 1px solid rgba(245,166,35,.35);
+      border-radius: 18px;
+      padding: 18px 20px;
+      max-width: 256px;
+      box-shadow: 0 8px 36px rgba(0,0,0,.55);
+      animation: slide-up .5s ease .8s both;
+    }
+    @keyframes slide-up {
+      from { transform: translateY(18px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    .flt-cal-close {
+      position: absolute; top: 8px; right: 10px;
+      background: none; border: none;
+      color: #555; cursor: pointer; font-size: 15px; padding: 0;
+      transition: color .2s;
+    }
+    .flt-cal-close:hover { color: #aaa; }
+    .flt-cal-emoji { font-size: 26px; margin-bottom: 6px; }
+    .flt-cal-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--gold); margin-bottom: 5px; }
+    .flt-cal-title { font-size: 14px; font-weight: 700; line-height: 1.35; margin-bottom: 4px; }
+    .flt-cal-sub   { font-size: 12px; color: #777; line-height: 1.45; margin-bottom: 14px; }
+    .flt-cal-cta {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--gold);
+      color: #000; font-weight: 700; font-size: 13px;
+      padding: 11px 14px; border-radius: 9px;
+      transition: all .25s; width: 100%;
+    }
+    .flt-cal-cta:hover { background: #e09200; }
+    .flt-cal-cta i { font-size: 17px; color: #25D366; }
+
+    /* ── RESPONSIVE ── */
+    @media screen and (max-width: 991px) {
+      .hero-grid      { grid-template-columns: 1fr; }
+      .form-card      { max-width: 480px; }
+      .stats-grid     { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .pain-grid      { grid-template-columns: repeat(2, 1fr); }
+      .solution-grid  { grid-template-columns: 1fr; gap: 44px; }
+      .steps          { grid-template-columns: 1fr; }
+      .steps::before  { display: none; }
+      .victor-grid    { grid-template-columns: 1fr; gap: 48px; }
+      .victor-img-wrap{ max-width: 340px; margin: 0 auto; }
+      .videos-row     { grid-template-columns: 1fr 1fr; }
+      .test-grid      { grid-template-columns: 1fr; }
+      .cal-grid       { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid    { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom  { flex-direction: column; gap: 8px; text-align: center; }
+      .fcta-guarantees{ gap: 32px; }
+    }
+    @media screen and (max-width: 767px) {
+      .sp { padding: 64px 0; }
+      .pain-grid      { grid-template-columns: 1fr; }
+      .videos-row     { grid-template-columns: 1fr; }
+      .flt-cal        { display: none; }
+      .nav-cta        { display: none; }
+      .hero-wpp       { align-self: stretch; justify-content: center; }
+      .stats-grid     { grid-template-columns: 1fr 1fr; gap: 20px; }
+    }
+    @media screen and (max-width: 479px) {
+      .flt-wpp        { bottom: 16px; right: 16px; }
+      .stats-grid     { grid-template-columns: 1fr 1fr; }
+      .fcta-guarantees{ gap: 24px; }
+      .victor-badge   { right: -8px; bottom: -8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ NAVBAR ═══ -->
+<nav class="nav" id="mainNav">
+  <div class="container">
+    <div class="nav-row">
+      <a href="#topo" class="nav-logo">
+        <img src="assets/logo-vimex.webp" alt="Vimex Marketing"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="nav-logo-text" style="display:none">VIMEX</span>
+      </a>
+      <a href="https://wa.me/5519997145430?text=Tenho%20um%20restaurante%20e%20quero%20um%20diagn%C3%B3stico%20gratuito%20para%20faturar%20mais!"
+         target="_blank" class="btn btn-green nav-cta">
+        <i class="fab fa-whatsapp"></i> Diagnóstico Gratuito
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════ HERO ═══ -->
+<section class="hero" id="topo">
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- Copy -->
+      <div>
+        <div class="hero-logo">
+          <img src="assets/logo-vimex.webp" alt="Vimex"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span style="display:none;font-size:32px;font-weight:900;letter-spacing:.1em">VIMEX</span>
+        </div>
+        <div class="hero-eyebrow">Marketing para Restaurantes</div>
+        <h1 class="hero-title">
+          Seu restaurante <span class="hl">lotado</span> e sendo a<br>
+          <span class="hl">referência</span> da sua região
+        </h1>
+        <p class="hero-sub">
+          Transformamos restaurantes em referências locais com marketing estratégico
+          que gera clientes de verdade — não apenas curtidas.
+        </p>
+        <div class="hero-cta-row">
+          <a href="https://wa.me/5519997145430?text=Tenho%20um%20restaurante%20e%20quero%20um%20diagn%C3%B3stico%20gratuito%20para%20faturar%20mais!"
+             target="_blank" class="hero-wpp">
+            <i class="fab fa-whatsapp"></i>
+            Quero um diagnóstico gratuito agora!
+          </a>
+          <div class="hero-trust">
+            <span class="hero-trust-item"><i class="fas fa-check-circle"></i> Sem compromisso</span>
+            <span class="hero-trust-item"><i class="fas fa-check-circle"></i> 100% gratuito</span>
+            <span class="hero-trust-item"><i class="fas fa-check-circle"></i> Resposta rápida</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="form-card" id="formCard">
+        <div id="formContent">
+          <div class="form-head">
+            <h3>Diagnóstico Gratuito</h3>
+            <p>Descubra quanto seu restaurante está deixando de faturar</p>
+          </div>
+          <form onsubmit="submitForm(event)">
+            <div class="fg">
+              <label>Seu nome *</label>
+              <input type="text" id="f-nome" placeholder="Nome completo" required>
+            </div>
+            <div class="fg">
+              <label>Nome do restaurante *</label>
+              <input type="text" id="f-rest" placeholder="Nome do seu restaurante" required>
+            </div>
+            <div class="fg">
+              <label>WhatsApp *</label>
+              <input type="tel" id="f-wpp" placeholder="(19) 99999-9999" required>
+            </div>
+            <div class="fg">
+              <label>E-mail</label>
+              <input type="email" id="f-email" placeholder="seu@email.com">
+            </div>
+            <button type="submit" class="form-submit">
+              Quero meu diagnóstico gratuito →
+            </button>
+            <p class="form-note"><i class="fas fa-lock"></i> Seus dados estão seguros. Sem spam.</p>
+          </form>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <div class="fs-icon"><i class="fas fa-check-circle"></i></div>
+          <h3>Recebemos seus dados!</h3>
+          <p>Vamos entrar em contato em breve pelo WhatsApp. Enquanto isso, você pode nos chamar diretamente:</p>
+          <a href="https://wa.me/5519997145430?text=Tenho%20um%20restaurante%20e%20quero%20um%20diagn%C3%B3stico%20gratuito%20para%20faturar%20mais!"
+             target="_blank" class="btn btn-green btn-w">
+            <i class="fab fa-whatsapp" style="font-size:20px"></i>
+            Falar agora no WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ STATS ═══ -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-n">50+</div>
+        <div class="stat-l">Restaurantes atendidos</div>
+      </div>
+      <div>
+        <div class="stat-n">R$2M+</div>
+        <div class="stat-l">Em faturamento gerado</div>
+      </div>
+      <div>
+        <div class="stat-n">300%</div>
+        <div class="stat-l">Crescimento médio no digital</div>
+      </div>
+      <div>
+        <div class="stat-n">5★</div>
+        <div class="stat-l">Avaliação dos clientes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ PAIN ═══ -->
+<section class="pain sp">
+  <div class="container">
+    <div class="tag"><i class="fas fa-exclamation-circle"></i> Você se identifica?</div>
+    <h2 class="sec-title">Os <span class="hl">maiores problemas</span> que donos<br>de restaurantes enfrentam</h2>
+    <p class="sec-sub">Se você passou por alguma dessas situações, você está no lugar certo.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-emoji">🪑</div>
+        <h3>Mesas vazias nos horários de pico</h3>
+        <p>Você investe na cozinha e no atendimento, mas as mesas ainda ficam vazias em dias que deveriam estar lotados.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">📱</div>
+        <h3>Redes sociais sem resultado real</h3>
+        <p>Posta todo dia, tem seguidores, mas esses números não se convertem em clientes novos nem em faturamento.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">🏆</div>
+        <h3>A concorrência aparece antes de você</h3>
+        <p>Quando alguém busca "onde comer em [sua cidade]", os concorrentes aparecem primeiro no Google e nos apps.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">💸</div>
+        <h3>Faturamento imprevisível todo mês</h3>
+        <p>Não há previsibilidade. O faturamento oscila muito e fica difícil planejar, investir e crescer com segurança.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">🎯</div>
+        <h3>Não sabe como atrair novos clientes</h3>
+        <p>Depende do boca a boca e de clientes antigos, sem estratégia clara para atrair pessoas novas de forma contínua.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">⏰</div>
+        <h3>Sem tempo para cuidar do marketing</h3>
+        <p>Você já tem um restaurante inteiro para gerenciar. Marketing fica sempre para depois — e "depois" nunca chega.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SOLUTION ═══ -->
+<section class="solution sp">
+  <div class="container">
+    <div class="solution-grid">
+      <div>
+        <div class="tag">A solução</div>
+        <h2 class="sec-title">Marketing feito por<br><span class="hl">especialistas</span> no setor<br>gastronômico</h2>
+        <p class="sec-sub">Na Vimex, a gente não faz marketing genérico. Entendemos o mercado de alimentação e criamos estratégias que realmente geram movimento no seu restaurante.</p>
+        <ul class="sol-list">
+          <li>
+            <div class="sol-check"><i class="fas fa-check" style="font-size:12px"></i></div>
+            <div>
+              <h4>Posicionamento local e regional</h4>
+              <p>Aparecemos onde seus clientes estão: Google Maps, Instagram, iFood, TikTok e mais.</p>
+            </div>
+          </li>
+          <li>
+            <div class="sol-check"><i class="fas fa-check" style="font-size:12px"></i></div>
+            <div>
+              <h4>Conteúdo que converte</h4>
+              <p>Fotos e vídeos que fazem o cliente salivar — e reservar uma mesa.</p>
+            </div>
+          </li>
+          <li>
+            <div class="sol-check"><i class="fas fa-check" style="font-size:12px"></i></div>
+            <div>
+              <h4>Campanhas em datas estratégicas</h4>
+              <p>Aproveitamos cada data sazonal para lotar seu restaurante na hora certa.</p>
+            </div>
+          </li>
+          <li>
+            <div class="sol-check"><i class="fas fa-check" style="font-size:12px"></i></div>
+            <div>
+              <h4>Gestão e relatórios mensais</h4>
+              <p>Você acompanha tudo com clareza — transparência total sobre os resultados.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="sol-card">
+          <div class="sol-card-title">Resultado dos nossos clientes</div>
+          <div class="sol-big">Mais clientes.</div>
+          <div class="sol-big hl">Mais faturamento.</div>
+          <div style="font-size:13px;color:#555;margin-top:8px">Resultados mensuráveis em até 90 dias</div>
+          <div class="sol-stats">
+            <div class="sol-stat-box"><strong>+47%</strong><span>Aumento médio de movimento</span></div>
+            <div class="sol-stat-box"><strong>3x</strong><span>Mais pedidos via delivery</span></div>
+            <div class="sol-stat-box"><strong>+120%</strong><span>Crescimento no Instagram</span></div>
+            <div class="sol-stat-box"><strong>Top 3</strong><span>No Google da região</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ HOW IT WORKS ═══ -->
+<section class="how sp" id="como-funciona">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto">
+      <div class="tag">Processo simples</div>
+      <h2 class="sec-title">Como funciona a <span class="hl">nossa parceria</span></h2>
+      <p class="sec-sub" style="margin:0 auto">Do primeiro contato até os resultados, tudo transparente e sem complicação.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <h3>Diagnóstico Gratuito</h3>
+        <p>Você nos conta sobre seu restaurante, seus desafios e objetivos. A gente analisa seu mercado local e identifica as maiores oportunidades de crescimento.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <h3>Estratégia Personalizada</h3>
+        <p>Desenvolvemos um plano de marketing sob medida para o seu tipo de restaurante, região e público. Sem fórmula genérica — cada negócio é único.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <h3>Execução e Resultados</h3>
+        <p>Colocamos tudo em prática enquanto você foca no que sabe fazer de melhor. Acompanhe os resultados em tempo real com relatórios claros.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ VICTOR ═══ -->
+<section class="victor sp" id="sobre">
+  <div class="container">
+    <div class="victor-grid">
+      <div class="victor-img-wrap">
+        <img src="assets/victor.jpg"
+             alt="Victor Spindola — Especialista em Marketing para Restaurantes"
+             class="victor-img"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="victor-img-ph" style="display:none">
+          <i class="fas fa-user"></i>
+          <span>Foto — Victor Spindola</span>
+        </div>
+        <div class="victor-badge">
+          <strong>5+ anos</strong>
+          especialista em marketing<br>para restaurantes
+        </div>
+      </div>
+      <div class="victor-info">
+        <div class="tag">Quem vai te ajudar</div>
+        <h2 class="victor-name">Victor Spindola</h2>
+        <p class="victor-role">Especialista em Marketing para o Setor de Alimentação</p>
+        <p class="victor-bio">
+          Fundador da Vimex Marketing, Victor ajuda restaurantes, bares e estabelecimentos do setor gastronômico a construírem uma presença digital sólida — e a transformarem seguidores em clientes fiéis. Com estratégias testadas no mercado real, já gerou mais de R$2 milhões em faturamento para seus clientes.
+        </p>
+        <div class="victor-creds">
+          <div class="victor-cred">
+            <i class="fas fa-star"></i>
+            <span>Especialista em posicionamento local para restaurantes</span>
+          </div>
+          <div class="victor-cred">
+            <i class="fas fa-chart-line"></i>
+            <span>Mais de 50 restaurantes atendidos em todo o Brasil</span>
+          </div>
+          <div class="victor-cred">
+            <i class="fas fa-trophy"></i>
+            <span>Criador de campanhas sazonais que lotam mesas</span>
+          </div>
+          <div class="victor-cred">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Formação em marketing digital com atualização constante</span>
+          </div>
+        </div>
+        <div class="victor-social">
+          <a href="https://instagram.com/victor.spindola_" target="_blank" class="vsoc-btn" title="Instagram pessoal"><i class="fab fa-instagram"></i></a>
+          <a href="https://instagram.com/vimex.mkt"        target="_blank" class="vsoc-btn" title="Instagram Vimex"><i class="fas fa-camera"></i></a>
+          <a href="https://wa.me/5519997145430?text=Tenho%20um%20restaurante%20e%20quero%20um%20diagn%C3%B3stico%20gratuito%20para%20faturar%20mais!"
+             target="_blank" class="vsoc-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:victor@vimexmarketing.com.br" class="vsoc-btn" title="E-mail"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ PROOFS ═══ -->
+<section class="proofs sp" id="resultados">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto 52px">
+      <div class="tag"><i class="fas fa-star"></i> Provas sociais</div>
+      <h2 class="sec-title">Restaurantes que <span class="hl">transformaram</span><br>seu faturamento</h2>
+      <p class="sec-sub" style="margin:0 auto">Veja o que dizem donos de restaurantes que já trabalharam com a Vimex.</p>
+    </div>
+
+    <!-- Video placeholders -->
+    <div class="videos-row">
+      <div class="vid-ph">
+        <i class="fas fa-play-circle"></i>
+        <span>Depoimento em vídeo<br><strong style="color:#3a3a3a">Em breve</strong></span>
+      </div>
+      <div class="vid-ph">
+        <i class="fas fa-play-circle"></i>
+        <span>Depoimento em vídeo<br><strong style="color:#3a3a3a">Em breve</strong></span>
+      </div>
+      <div class="vid-ph">
+        <i class="fas fa-play-circle"></i>
+        <span>Depoimento em vídeo<br><strong style="color:#3a3a3a">Em breve</strong></span>
+      </div>
+    </div>
+
+    <!-- Text testimonials placeholders -->
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-txt">"Em breve — depoimento de cliente real."</p>
+        <div class="test-author">
+          <div class="test-av"><i class="fas fa-user"></i></div>
+          <div>
+            <strong>Nome do cliente</strong>
+            <span>Restaurante · Cidade</span>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-txt">"Em breve — depoimento de cliente real."</p>
+        <div class="test-author">
+          <div class="test-av"><i class="fas fa-user"></i></div>
+          <div>
+            <strong>Nome do cliente</strong>
+            <span>Restaurante · Cidade</span>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-txt">"Em breve — depoimento de cliente real."</p>
+        <div class="test-author">
+          <div class="test-av"><i class="fas fa-user"></i></div>
+          <div>
+            <strong>Nome do cliente</strong>
+            <span>Restaurante · Cidade</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ CALENDAR ═══ -->
+<section class="cal-sec sp" id="calendario">
+  <div class="container">
+    <div class="cal-grid">
+      <div>
+        <div class="tag tag-gold"><i class="fas fa-gift"></i> Grátis para você</div>
+        <div class="cal-icon-box">📅</div>
+        <h2 class="cal-title">
+          Calendário de <span class="hl2">Datas Sazonais</span><br>para Restaurantes
+        </h2>
+        <p class="cal-desc">
+          Receba gratuitamente um calendário completo com as principais datas sazonais do ano
+          — pensado especificamente para restaurantes. Dia das Mães, São João, Dia dos Namorados,
+          Natal e muito mais: saiba como usar cada data para lotar seu restaurante e criar
+          campanhas certeiras que geram faturamento real.
+        </p>
+      </div>
+      <div class="cal-card">
+        <div class="cal-card-emoji">🗓️</div>
+        <h3>Calendário 2025 / 2026</h3>
+        <p class="cal-card-sub">Datas sazonais + estratégias de marketing para cada uma delas</p>
+        <ul class="cal-checklist">
+          <li><i class="fas fa-check"></i> +30 datas estratégicas mapeadas</li>
+          <li><i class="fas fa-check"></i> Dicas de campanha para cada data</li>
+          <li><i class="fas fa-check"></i> Planejamento antecipado de ações</li>
+          <li><i class="fas fa-check"></i> Exclusivo para restaurantes</li>
+        </ul>
+        <a href="https://wa.me/5519997145430?text=Ol%C3%A1!%20Quero%20receber%20gratuitamente%20o%20Calend%C3%A1rio%20de%20Datas%20Sazonais%20para%20Restaurantes!"
+           target="_blank" class="btn btn-gold btn-w">
+          <i class="fab fa-whatsapp" style="font-size:20px;color:#25D366"></i>
+          Quero o calendário gratuito!
+        </a>
+        <p class="cal-free">100% gratuito · Sem compromisso</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ FINAL CTA ═══ -->
+<section class="fcta sp">
+  <div class="container fcta-inner">
+    <h2 class="fcta-title">
+      Pronto para <span class="hl">lotar seu restaurante</span><br>
+      e faturar mais?
+    </h2>
+    <p class="fcta-sub">
+      Dê o primeiro passo. O diagnóstico é gratuito, sem compromisso<br>
+      e pode mudar o rumo do seu negócio.
+    </p>
+    <a href="https://wa.me/5519997145430?text=Tenho%20um%20restaurante%20e%20quero%20um%20diagn%C3%B3stico%20gratuito%20para%20faturar%20mais!"
+       target="_blank" class="fcta-main-btn">
+      <span class="pulse-dot"></span>
+      <i class="fab fa-whatsapp"></i>
+      Quero meu diagnóstico gratuito agora!
+    </a>
+    <p class="fcta-note"><i class="fas fa-clock" style="margin-right:6px"></i>Resposta em até 1 hora no horário comercial</p>
+    <div class="fcta-guarantees">
+      <div class="guarantee">
+        <div class="guarantee-icon">🎯</div>
+        <div class="guarantee-title">Estratégia Personalizada</div>
+        <div class="guarantee-sub">Sem fórmulas genéricas</div>
+      </div>
+      <div class="guarantee">
+        <div class="guarantee-icon">📊</div>
+        <div class="guarantee-title">Resultados Mensuráveis</div>
+        <div class="guarantee-sub">Acompanhe em tempo real</div>
+      </div>
+      <div class="guarantee">
+        <div class="guarantee-icon">🤝</div>
+        <div class="guarantee-title">Parceria de Verdade</div>
+        <div class="guarantee-sub">Seu sucesso é o nosso</div>
+      </div>
+      <div class="guarantee">
+        <div class="guarantee-icon">⚡</div>
+        <div class="guarantee-title">Início Rápido</div>
+        <div class="guarantee-sub">Resultados em até 90 dias</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="assets/logo-vimex.webp" alt="Vimex Marketing"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="footer-logo-text" style="display:none">VIMEX</span>
+        </div>
+        <p class="footer-desc">
+          Marketing estratégico para restaurantes que querem vender mais, se posicionar
+          melhor e se tornar referência na sua região.
+        </p>
+        <div class="footer-soc">
+          <a href="https://instagram.com/vimex.mkt"        target="_blank" title="Instagram Vimex"><i class="fab fa-instagram"></i></a>
+          <a href="https://instagram.com/victor.spindola_" target="_blank" title="Instagram Victor"><i class="fas fa-user"></i></a>
+          <a href="https://wa.me/5519997145430"            target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:victor@vimexmarketing.com.br"    title="E-mail"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <ul class="footer-links">
+          <li><a href="#topo">Início</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#sobre">Sobre Victor</a></li>
+          <li><a href="#resultados">Resultados</a></li>
+          <li><a href="#calendario">Calendário Gratuito</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul class="footer-links">
+          <li>
+            <a href="https://wa.me/5519997145430" target="_blank">
+              <i class="fab fa-whatsapp" style="margin-right:6px"></i>+55 (19) 99714-5430
+            </a>
+          </li>
+          <li>
+            <a href="mailto:victor@vimexmarketing.com.br">
+              <i class="fas fa-envelope" style="margin-right:6px"></i>victor@vimexmarketing.com.br
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com/vimex.mkt" target="_blank">
+              <i class="fab fa-instagram" style="margin-right:6px"></i>@vimex.mkt
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Vimex Marketing. Todos os direitos reservados.</p>
+      <p>Feito com ♥ para restaurantes que querem crescer.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════ FLOATING WHATSAPP ═══ -->
+<div class="flt-wpp">
+  <div class="flt-wpp-tip">Fale com a Vimex agora!</div>
+  <a href="https://wa.me/5519997145430?text=Tenho%20um%20restaurante%20e%20quero%20um%20diagn%C3%B3stico%20gratuito%20para%20faturar%20mais!"
+     target="_blank" class="flt-wpp-btn">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+<!-- ═══════════════════════════════════════ FLOATING CALENDAR ═══ -->
+<div class="flt-cal" id="fltCal">
+  <button class="flt-cal-close" onclick="this.parentElement.style.display='none'" aria-label="Fechar">
+    <i class="fas fa-times"></i>
+  </button>
+  <div class="flt-cal-emoji">📅</div>
+  <div class="flt-cal-tag">Grátis para você</div>
+  <div class="flt-cal-title">Calendário Sazonal<br>para Restaurantes</div>
+  <div class="flt-cal-sub">+30 datas estratégicas para lotar seu restaurante o ano todo</div>
+  <a href="https://wa.me/5519997145430?text=Ol%C3%A1!%20Quero%20receber%20gratuitamente%20o%20Calend%C3%A1rio%20de%20Datas%20Sazonais%20para%20Restaurantes!"
+     target="_blank" class="flt-cal-cta">
+    <i class="fab fa-whatsapp"></i> Quero grátis!
+  </a>
+</div>
+
+<script>
+  // Nav sticky
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('stuck', window.scrollY > 60);
+  });
+
+  // Form submit → redirect to WhatsApp with pre-filled message
+  function submitForm(e) {
+    e.preventDefault();
+    const nome = document.getElementById('f-nome').value.trim();
+    const rest = document.getElementById('f-rest').value.trim();
+    const wpp  = document.getElementById('f-wpp').value.trim();
+    const msg  = encodeURIComponent(
+      `Olá Victor! Me chamo ${nome}, tenho o restaurante "${rest}" e quero um diagnóstico gratuito para faturar mais! Meu WhatsApp: ${wpp}`
+    );
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+    setTimeout(() => {
+      window.open(`https://wa.me/5519997145430?text=${msg}`, '_blank');
+    }, 700);
+  }
+
+  // Auto-hide floating calendar after 12 s
+  setTimeout(() => {
+    const el = document.getElementById('fltCal');
+    if (el) el.style.display = 'none';
+  }, 12000);
+</script>
+</body>
+</html>
