@@ -91,7 +91,7 @@
     .hero-vid-bg{
       position:absolute;top:0;left:0;width:100%;height:100%;
       z-index:0;overflow:hidden;pointer-events:none;
-      background:#0a0a0a url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&h=1080&fit=crop&q=85') center/cover no-repeat;
+      background:#0a0a0a url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&h=1080&fit=crop&q=85') center/cover no-repeat;
     }
     .hero-vid-bg video{
       position:absolute;top:50%;left:50%;
@@ -104,31 +104,33 @@
       position:absolute;inset:0;
       background:
         linear-gradient(180deg,
-          rgba(0,0,0,.55) 0%,
-          rgba(0,0,0,.5) 55%,
-          rgba(10,10,10,.95) 90%,
+          rgba(0,0,0,.82) 0%,
+          rgba(0,0,0,.78) 55%,
+          rgba(10,10,10,.97) 90%,
           rgba(10,10,10,1) 100%
         ),
-        radial-gradient(ellipse 60% 50% at 80% 40%,rgba(255,69,0,.14) 0%,transparent 60%);
+        radial-gradient(ellipse 60% 50% at 80% 40%,rgba(255,69,0,.12) 0%,transparent 60%);
     }
 
-    /* ═══ MONEY FLOATERS ═══ */
-    @keyframes money-up{
-      0%{transform:translateY(110vh) translateX(0) rotate(0deg);opacity:0}
-      8%{opacity:var(--op,.45)}
-      92%{opacity:var(--op,.45)}
-      100%{transform:translateY(-160px) translateX(var(--drift,0px)) rotate(var(--rot,540deg));opacity:0}
+    /* ═══ MONEY FLOATERS — real bills falling from top ═══ */
+    @keyframes money-fall{
+      0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0}
+      6%{opacity:var(--op,.6)}
+      94%{opacity:var(--op,.6)}
+      100%{transform:translateY(115vh) translateX(var(--drift,0px)) rotate(var(--rot,540deg));opacity:0}
     }
     .money-float{
       position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;
     }
-    .money-float i{
-      position:absolute;bottom:-60px;
-      font-size:var(--size,30px);
-      color:#22C55E;
+    .money-float .bill{
+      position:absolute;top:-90px;
+      width:var(--size,90px);height:auto;
+      aspect-ratio:5/2.5;
+      object-fit:cover;
+      border-radius:4px;
       opacity:0;
-      animation:money-up var(--dur,22s) linear var(--delay,0s) infinite;
-      filter:drop-shadow(0 6px 14px rgba(34,197,94,.4)) drop-shadow(0 0 18px rgba(34,197,94,.15));
+      box-shadow:0 10px 28px rgba(0,0,0,.5),0 0 18px rgba(34,197,94,.22);
+      animation:money-fall var(--dur,18s) linear var(--delay,0s) infinite;
     }
 
     /* ═══ BUTTONS ═══ */
@@ -785,7 +787,7 @@
   <!-- Hero video background (self-hosted, no ads) -->
   <div class="hero-vid-bg">
     <video autoplay muted loop playsinline preload="auto"
-           poster="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&h=1080&fit=crop&q=85">
+           poster="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&h=1080&fit=crop&q=85">
       <source src="assets/hero-video.mp4" type="video/mp4">
     </video>
     <div class="hero-vid-overlay"></div>
@@ -1287,21 +1289,32 @@
     if (el) el.style.display = 'none';
   }, 14000);
 
-  // ═══ Floating money bills in hero ═══
-  const MONEY_ICONS = ['fa-money-bill-1-wave','fa-money-bill-wave','fa-money-bill-1','fa-money-bill'];
+  // ═══ Real money bills falling from top of hero ═══
+  const BILL_IMGS = [
+    'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=240&h=120&fit=crop&q=85', // dollar bills
+    'https://images.unsplash.com/photo-1621981386829-9b458a15d1d2?w=240&h=120&fit=crop&q=85', // cash
+    'https://images.unsplash.com/photo-1620266757065-f0aa17075c8e?w=240&h=120&fit=crop&q=85', // bills
+    'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=240&h=120&fit=crop&q=85', // $100 close
+    'https://images.unsplash.com/photo-1607863680198-23d4b2565df0?w=240&h=120&fit=crop&q=85', // money
+    'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=240&h=120&fit=crop&q=85', // hundred
+  ];
   const moneyEl = document.getElementById('moneyFloat');
   if (moneyEl) {
-    for (let i = 0; i < 10; i++) {
-      const ic = document.createElement('i');
-      ic.className = 'fas ' + MONEY_ICONS[Math.floor(Math.random() * MONEY_ICONS.length)];
-      ic.style.setProperty('--size', (24 + Math.random() * 22) + 'px');
-      ic.style.setProperty('--dur', (18 + Math.random() * 12) + 's');
-      ic.style.setProperty('--delay', (Math.random() * 20) + 's');
-      ic.style.setProperty('--drift', (Math.random() * 220 - 110) + 'px');
-      ic.style.setProperty('--rot', (Math.random() * 540 - 270) + 'deg');
-      ic.style.setProperty('--op', (0.35 + Math.random() * 0.25).toFixed(2));
-      ic.style.left = (Math.random() * 95) + '%';
-      moneyEl.appendChild(ic);
+    for (let i = 0; i < 14; i++) {
+      const img = document.createElement('img');
+      img.className = 'bill';
+      img.src = BILL_IMGS[Math.floor(Math.random() * BILL_IMGS.length)];
+      img.alt = '';
+      img.loading = 'lazy';
+      img.onerror = function(){ this.style.display = 'none'; };
+      img.style.setProperty('--size', (70 + Math.random() * 70) + 'px');
+      img.style.setProperty('--dur', (12 + Math.random() * 10) + 's');
+      img.style.setProperty('--delay', (Math.random() * 16) + 's');
+      img.style.setProperty('--drift', (Math.random() * 260 - 130) + 'px');
+      img.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+      img.style.setProperty('--op', (0.55 + Math.random() * 0.3).toFixed(2));
+      img.style.left = (Math.random() * 95) + '%';
+      moneyEl.appendChild(img);
     }
   }
 </script>
