@@ -91,7 +91,7 @@
     .hero-vid-bg{
       position:absolute;top:0;left:0;width:100%;height:100%;
       z-index:0;overflow:hidden;pointer-events:none;
-      background:#0a0a0a url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop&q=80') center/cover no-repeat;
+      background:#0a0a0a url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&h=1080&fit=crop&q=85') center/cover no-repeat;
     }
     .hero-vid-bg video{
       position:absolute;top:50%;left:50%;
@@ -104,13 +104,31 @@
       position:absolute;inset:0;
       background:
         linear-gradient(180deg,
-          rgba(0,0,0,.78) 0%,
-          rgba(0,0,0,.72) 55%,
-          rgba(10,10,10,.97) 88%,
+          rgba(0,0,0,.55) 0%,
+          rgba(0,0,0,.5) 55%,
+          rgba(10,10,10,.95) 90%,
           rgba(10,10,10,1) 100%
         ),
-        radial-gradient(ellipse 70% 55% at 78% 40%,rgba(255,69,0,.15) 0%,transparent 60%),
-        radial-gradient(ellipse 40% 40% at 5% 90%,rgba(124,58,237,.1) 0%,transparent 55%);
+        radial-gradient(ellipse 60% 50% at 80% 40%,rgba(255,69,0,.14) 0%,transparent 60%);
+    }
+
+    /* ═══ MONEY FLOATERS ═══ */
+    @keyframes money-up{
+      0%{transform:translateY(110vh) translateX(0) rotate(0deg);opacity:0}
+      8%{opacity:var(--op,.45)}
+      92%{opacity:var(--op,.45)}
+      100%{transform:translateY(-160px) translateX(var(--drift,0px)) rotate(var(--rot,540deg));opacity:0}
+    }
+    .money-float{
+      position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;
+    }
+    .money-float i{
+      position:absolute;bottom:-60px;
+      font-size:var(--size,30px);
+      color:#22C55E;
+      opacity:0;
+      animation:money-up var(--dur,22s) linear var(--delay,0s) infinite;
+      filter:drop-shadow(0 6px 14px rgba(34,197,94,.4)) drop-shadow(0 0 18px rgba(34,197,94,.15));
     }
 
     /* ═══ BUTTONS ═══ */
@@ -767,11 +785,14 @@
   <!-- Hero video background (self-hosted, no ads) -->
   <div class="hero-vid-bg">
     <video autoplay muted loop playsinline preload="auto"
-           poster="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop&q=80">
+           poster="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&h=1080&fit=crop&q=85">
       <source src="assets/hero-video.mp4" type="video/mp4">
     </video>
     <div class="hero-vid-overlay"></div>
   </div>
+
+  <!-- Floating money bills -->
+  <div class="money-float" id="moneyFloat"></div>
 
   <div class="container" style="position:relative;z-index:3">
     <div class="hero-wrap">
@@ -1266,6 +1287,23 @@
     if (el) el.style.display = 'none';
   }, 14000);
 
+  // ═══ Floating money bills in hero ═══
+  const MONEY_ICONS = ['fa-money-bill-1-wave','fa-money-bill-wave','fa-money-bill-1','fa-money-bill'];
+  const moneyEl = document.getElementById('moneyFloat');
+  if (moneyEl) {
+    for (let i = 0; i < 10; i++) {
+      const ic = document.createElement('i');
+      ic.className = 'fas ' + MONEY_ICONS[Math.floor(Math.random() * MONEY_ICONS.length)];
+      ic.style.setProperty('--size', (24 + Math.random() * 22) + 'px');
+      ic.style.setProperty('--dur', (18 + Math.random() * 12) + 's');
+      ic.style.setProperty('--delay', (Math.random() * 20) + 's');
+      ic.style.setProperty('--drift', (Math.random() * 220 - 110) + 'px');
+      ic.style.setProperty('--rot', (Math.random() * 540 - 270) + 'deg');
+      ic.style.setProperty('--op', (0.35 + Math.random() * 0.25).toFixed(2));
+      ic.style.left = (Math.random() * 95) + '%';
+      moneyEl.appendChild(ic);
+    }
+  }
 </script>
 </body>
 </html>
