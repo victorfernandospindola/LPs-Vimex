@@ -91,26 +91,26 @@
     .hero-vid-bg{
       position:absolute;top:0;left:0;width:100%;height:100%;
       z-index:0;overflow:hidden;pointer-events:none;
+      background:#0a0a0a url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop&q=80') center/cover no-repeat;
     }
-    .hero-vid-bg iframe{
+    .hero-vid-bg video{
       position:absolute;top:50%;left:50%;
       transform:translate(-50%,-50%);
-      width:177.78vh;   /* 16:9 → fill height */
-      height:100vh;
-      min-width:100%;
-      min-height:56.25vw; /* 16:9 → fill width */
+      min-width:100%;min-height:100%;
+      width:auto;height:auto;
+      object-fit:cover;
     }
     .hero-vid-overlay{
       position:absolute;inset:0;
       background:
         linear-gradient(180deg,
-          rgba(0,0,0,.52) 0%,
+          rgba(0,0,0,.5) 0%,
           rgba(0,0,0,.42) 55%,
           rgba(10,10,10,.96) 88%,
           rgba(10,10,10,1) 100%
         ),
-        radial-gradient(ellipse 70% 55% at 78% 40%,rgba(255,69,0,.18) 0%,transparent 60%),
-        radial-gradient(ellipse 40% 40% at 5% 90%,rgba(124,58,237,.12) 0%,transparent 55%);
+        radial-gradient(ellipse 70% 55% at 78% 40%,rgba(255,69,0,.2) 0%,transparent 60%),
+        radial-gradient(ellipse 40% 40% at 5% 90%,rgba(124,58,237,.13) 0%,transparent 55%);
     }
 
     /* ═══ BUTTONS ═══ */
@@ -742,13 +742,12 @@
 <!-- ═══ HERO ═══ -->
 <section class="hero" id="topo">
 
-  <!-- YouTube video background -->
+  <!-- Hero video background (self-hosted, no ads) -->
   <div class="hero-vid-bg">
-    <iframe src="https://www.youtube.com/embed/WSTf9Bja7is?autoplay=1&mute=1&loop=1&playlist=WSTf9Bja7is&controls=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0"
-      frameborder="0"
-      allow="autoplay; fullscreen"
-      loading="eager"
-      title=""></iframe>
+    <video autoplay muted loop playsinline preload="auto"
+           poster="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop&q=80">
+      <source src="assets/hero-video.mp4" type="video/mp4">
+    </video>
     <div class="hero-vid-overlay"></div>
   </div>
 
