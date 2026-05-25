@@ -241,15 +241,20 @@
     .hero-cta-stack{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
     .hero-cta-note{font-size:12px;color:#555;display:flex;align-items:center;gap:6px}
 
-    /* Hero photo column */
-    .hero-photo-col{position:relative;animation:fade-up .9s ease .2s both}
+    /* Hero photo column — editorial portrait */
+    .hero-photo-col{position:relative;animation:fade-up .9s ease .2s both;text-align:center}
     .photo-frame{
-      position:relative;width:100%;max-width:480px;margin:0 auto;
-      aspect-ratio:1/1;border-radius:24px;overflow:hidden;
-      border:2px solid rgba(255,69,0,.4);
-      animation:border-glow 3s ease-in-out infinite;
+      position:relative;width:100%;max-width:400px;margin:0 auto;
+      aspect-ratio:4/5;border-radius:16px;overflow:hidden;
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.55),
+        0 0 0 1px rgba(255,184,0,.18),
+        0 0 60px rgba(255,69,0,.1);
     }
-    .photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top}
+    .photo-frame img{
+      width:100%;height:100%;object-fit:cover;object-position:center 18%;
+      filter:contrast(1.04) saturate(1.06);
+    }
     .photo-frame-ph{
       width:100%;height:100%;
       background:linear-gradient(160deg,#1a0a00,#250e00);
@@ -259,19 +264,36 @@
     .photo-frame-ph i{font-size:80px}
     .photo-frame-ph span{font-size:14px}
 
-    .floating-badge{
-      position:absolute;
-      background:linear-gradient(135deg,var(--orange),#c73500);
-      color:#fff;border-radius:14px;
-      padding:12px 18px;
-      box-shadow:0 10px 30px rgba(255,69,0,.4);
-      font-size:13px;font-weight:700;text-align:center;line-height:1.3;
-      animation:bounce-soft 3s ease-in-out infinite;
+    .photo-caption{
+      position:absolute;left:0;right:0;bottom:0;
+      padding:48px 22px 22px;
+      background:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.6) 50%,rgba(0,0,0,.92) 100%);
+      text-align:left;
     }
-    .floating-badge strong{display:block;font-size:22px}
-    .fb-1{bottom:20px;left:-16px;animation-delay:.4s}
-    .fb-2{top:30px;right:-12px;background:linear-gradient(135deg,var(--gold),#d99700);color:#000;animation-delay:1s}
-    .fb-3{bottom:30%;right:-20px;background:linear-gradient(135deg,var(--wpp),#1aa84a);animation-delay:.2s}
+    .photo-caption-name{
+      font-size:22px;font-weight:800;color:#fff;line-height:1.1;letter-spacing:-.01em;
+    }
+    .photo-caption-line{
+      width:42px;height:2.5px;margin:10px 0 8px;
+      background:linear-gradient(90deg,var(--gold),var(--orange));
+      border-radius:2px;
+    }
+    .photo-caption-role{
+      font-size:11px;color:var(--gold);
+      font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    }
+
+    .photo-creds{
+      display:inline-flex;align-items:center;gap:14px;
+      margin-top:20px;font-size:12.5px;color:#aaa;font-weight:500;
+      padding:10px 18px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:100px;
+      backdrop-filter:blur(8px);
+    }
+    .photo-creds .dot{width:4px;height:4px;background:#555;border-radius:50%}
+    .photo-creds i{color:var(--orange2);margin-right:7px;font-size:13px}
 
     /* ═══ TICKER ═══ */
     .ticker{
@@ -712,7 +734,7 @@
       .nav-pill{display:none}
       .hero-cta-stack{align-items:stretch}
       .btn-bg-green,.btn-bg-orange{width:100%}
-      .floating-badge{transform:scale(.85)}
+      .photo-frame{max-width:320px}
     }
     @media screen and (max-width:479px){
       .flt-wpp{bottom:14px;right:14px}
@@ -768,7 +790,7 @@
         </div>
 
         <h1 class="hero-title">
-          Lote sua casa.<br>
+          Lote seu restaurante.<br>
           <em>Vire referência.</em>
         </h1>
         <p class="hero-sub">
@@ -802,18 +824,16 @@
             <i class="fas fa-user"></i>
             <span>Foto — Victor Spindola</span>
           </div>
+          <div class="photo-caption">
+            <div class="photo-caption-name">Victor Spindola</div>
+            <div class="photo-caption-line"></div>
+            <div class="photo-caption-role">Estrategista de Restaurantes</div>
+          </div>
         </div>
-        <div class="floating-badge fb-1">
-          <strong>+50</strong>
-          restaurantes<br>acelerados
-        </div>
-        <div class="floating-badge fb-2">
-          <strong>⭐ 5,0</strong>
-          dos clientes
-        </div>
-        <div class="floating-badge fb-3">
-          <i class="fab fa-whatsapp" style="font-size:20px"></i>
-          <strong style="font-size:14px;margin-top:4px">Direto comigo</strong>
+        <div class="photo-creds">
+          <span><i class="fas fa-medal"></i>+5 anos no setor</span>
+          <span class="dot"></span>
+          <span><i class="fas fa-utensils"></i>+50 restaurantes</span>
         </div>
       </div>
 
