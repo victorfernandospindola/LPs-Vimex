@@ -82,19 +82,29 @@
       25%{transform:rotate(-3deg)}
       75%{transform:rotate(3deg)}
     }
+    @keyframes text-shimmer{
+      0%{background-position:0% 50%}
+      100%{background-position:200% 50%}
+    }
+    @keyframes border-glow{
+      0%,100%{box-shadow:0 20px 60px rgba(255,69,0,.22),0 0 0 1px rgba(255,255,255,.05),0 0 80px rgba(255,69,0,.08)}
+      50%{box-shadow:0 20px 80px rgba(255,69,0,.38),0 0 0 1px rgba(255,255,255,.08),0 0 120px rgba(255,69,0,.18)}
+    }
 
-    /* ═══ FLOATING BG (food + money) ═══ */
+    /* ═══ FLOATING BG (food photos + money) ═══ */
     .bg-float{
       position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;
     }
-    .bg-float span{
-      position:absolute;bottom:-80px;
-      font-size:var(--size,32px);
+    .bg-float .floater{
+      position:absolute;bottom:-140px;
+      width:var(--size,80px);height:var(--size,80px);
+      border-radius:50%;object-fit:cover;
       opacity:0;
       animation:float-up var(--dur,22s) linear var(--delay,0s) infinite;
-      filter:drop-shadow(0 2px 8px rgba(0,0,0,.4));
+      box-shadow:0 8px 32px rgba(0,0,0,.6),0 0 0 2px rgba(255,255,255,.08),0 0 20px rgba(255,100,0,.15);
+      filter:brightness(1.08) contrast(1.06) saturate(1.25);
     }
-    .bg-float span.show{opacity:var(--op,.35)}
+    .bg-float .floater.show{opacity:var(--op,.6)}
 
     /* ═══ BUTTONS ═══ */
     .btn-bg-green{
@@ -176,9 +186,15 @@
     .hero::before{
       content:'';position:absolute;inset:0;z-index:1;
       background:
-        radial-gradient(ellipse 60% 55% at 80% 40%,rgba(255,69,0,.2) 0%,transparent 60%),
-        radial-gradient(ellipse 40% 40% at 5% 90%,rgba(124,58,237,.13) 0%,transparent 55%);
+        radial-gradient(ellipse 65% 60% at 80% 40%,rgba(255,69,0,.28) 0%,transparent 60%),
+        radial-gradient(ellipse 40% 40% at 5% 90%,rgba(124,58,237,.15) 0%,transparent 55%),
+        radial-gradient(ellipse 50% 40% at 50% 0%,rgba(255,184,0,.06) 0%,transparent 50%);
       pointer-events:none;
+    }
+    .hero::after{
+      content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+      background-image:radial-gradient(rgba(255,255,255,.032) 1.5px,transparent 1.5px);
+      background-size:30px 30px;
     }
     .hero-wrap{
       display:grid;grid-template-columns:1.05fr 1fr;gap:48px;
@@ -204,7 +220,13 @@
       font-size:clamp(36px,5.2vw,64px);
       font-weight:900;line-height:1.05;margin-bottom:18px;
     }
-    .hero-title em{font-style:normal;background:linear-gradient(135deg,var(--orange),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-title em{
+      font-style:normal;
+      background:linear-gradient(90deg,var(--orange),var(--gold),var(--orange2),var(--gold),var(--orange));
+      background-size:300% 100%;
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+      animation:text-shimmer 3.5s linear infinite;
+    }
     .hero-sub{font-size:18px;color:#bbb;margin-bottom:28px;max-width:480px}
 
     .hero-mini-bar{
@@ -225,8 +247,8 @@
     .photo-frame{
       position:relative;width:100%;max-width:480px;margin:0 auto;
       aspect-ratio:1/1;border-radius:24px;overflow:hidden;
-      border:3px solid rgba(255,69,0,.3);
-      box-shadow:0 20px 60px rgba(255,69,0,.2),0 0 0 1px rgba(255,255,255,.05);
+      border:2px solid rgba(255,69,0,.4);
+      animation:border-glow 3s ease-in-out infinite;
     }
     .photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top}
     .photo-frame-ph{
@@ -266,7 +288,16 @@
     .ticker-dot{width:8px;height:8px;background:rgba(255,255,255,.5);border-radius:50%}
 
     /* ═══ VISUAL STATS ROW ═══ */
-    .vstats{background:var(--bg2);padding:48px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+    .vstats{
+      background:linear-gradient(180deg,var(--bg2) 0%,#0f0f0f 100%);
+      padding:56px 0;border-bottom:1px solid rgba(255,255,255,.05);
+      position:relative;
+    }
+    .vstats::before{
+      content:'';position:absolute;inset:0;pointer-events:none;
+      background-image:radial-gradient(rgba(255,255,255,.025) 1px,transparent 1px);
+      background-size:24px 24px;
+    }
     .vstats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
     .vstat{
       text-align:center;padding:16px;
@@ -277,7 +308,11 @@
     .vstat:nth-child(2) .vstat-emoji{animation-delay:.5s}
     .vstat:nth-child(3) .vstat-emoji{animation-delay:1s}
     .vstat:nth-child(4) .vstat-emoji{animation-delay:1.5s}
-    .vstat-num{font-size:28px;font-weight:900;color:var(--orange2);line-height:1}
+    .vstat-num{
+      font-size:34px;font-weight:900;line-height:1;
+      background:linear-gradient(135deg,var(--orange2),var(--gold));
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    }
     .vstat-lbl{font-size:13px;color:#888;margin-top:4px}
 
     /* ═══ FORM SECTION ═══ */
@@ -293,8 +328,11 @@
     .fplist li i{color:var(--gold);font-size:16px;flex-shrink:0}
 
     .form-card{
-      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
-      border-radius:22px;padding:36px 30px;backdrop-filter:blur(16px);
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,69,0,.2);
+      border-radius:22px;padding:36px 30px;
+      backdrop-filter:blur(24px);
+      box-shadow:0 24px 64px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.06);
       position:relative;z-index:2;
     }
     .form-card-title{font-size:21px;font-weight:800;margin-bottom:4px}
@@ -334,7 +372,12 @@
     }
     .pain-card:hover{transform:translateY(-6px);background:rgba(255,69,0,.05);border-color:rgba(255,69,0,.25)}
     .pain-card:hover::before{opacity:1}
-    .pain-emoji{font-size:46px;margin-bottom:12px;display:block}
+    .pain-emoji{
+      font-size:50px;margin-bottom:14px;display:block;
+      transition:transform .3s ease;
+      filter:drop-shadow(0 4px 10px rgba(0,0,0,.5));
+    }
+    .pain-card:hover .pain-emoji{transform:scale(1.25) rotate(6deg)}
     .pain-card h3{font-size:15px;font-weight:700;line-height:1.3}
 
     .pain-cta{margin-top:44px}
@@ -371,7 +414,15 @@
     .sol-stat span{font-size:12px;color:#888;line-height:1.4;display:block;margin-top:6px}
 
     /* ═══ HOW — visual cards ═══ */
-    .how{background:linear-gradient(160deg,#0e0500,#120800)}
+    .how{
+      background:linear-gradient(160deg,#0d0400,#160900);
+      position:relative;overflow:hidden;
+    }
+    .how::before{
+      content:'';position:absolute;inset:0;pointer-events:none;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 100%,rgba(255,69,0,.1) 0%,transparent 60%);
+    }
     .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
     .step{
       background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);
@@ -686,8 +737,8 @@
       <!-- Photo -->
       <div class="hero-photo-col">
         <div class="photo-frame">
-          <img src="assets/victor.jpg" alt="Victor Spindola"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="assets/victor.svg" alt="Victor Spindola"
+               onerror="this.src='assets/victor.jpg';this.onerror=function(){this.style.display='none';this.nextElementSibling.style.display='flex'}">
           <div class="photo-frame-ph" style="display:none">
             <i class="fas fa-user"></i>
             <span>Foto — Victor Spindola</span>
@@ -929,8 +980,8 @@
   <div class="container">
     <div class="victor-grid">
       <div class="victor-img-wrap">
-        <img src="assets/victor.jpg" alt="Victor Spindola" class="victor-img"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img src="assets/victor.svg" alt="Victor Spindola" class="victor-img"
+             onerror="this.src='assets/victor.jpg';this.onerror=function(){this.style.display='none';this.nextElementSibling.style.display='flex'}">
         <div class="victor-img-ph" style="display:none">
           <i class="fas fa-user"></i>
         </div>
@@ -1140,32 +1191,58 @@
     if (el) el.style.display = 'none';
   }, 14000);
 
-  // ═══ Floating food + money background ═══
-  const FOOD_EMOJI = ['🍕','🍔','🍣','🍝','🥩','🍷','🍰','🍟','🌮','🍜','🥗','🍤','🌯','🍱','🥙','🍗','🍩','🥘','🍖','🥐'];
-  const MONEY_EMOJI = ['💰','💵','💸','💴','💶','🤑'];
-  const ALL_EMOJI = [...FOOD_EMOJI, ...FOOD_EMOJI, ...MONEY_EMOJI]; // more food than money
+  // ═══ Floating food photos + money background ═══
+  const BASE = 'https://images.unsplash.com/';
+  const FOOD_IMGS = [
+    BASE+'photo-1565299624946-b28f40a0ae38?w=120&h=120&q=85&fit=crop', // pizza
+    BASE+'photo-1568901346375-23c9450c58cd?w=120&h=120&q=85&fit=crop', // burger
+    BASE+'photo-1579871494447-9811cf80d66c?w=120&h=120&q=85&fit=crop', // sushi
+    BASE+'photo-1546833999-b9f581a1996d?w=120&h=120&q=85&fit=crop',    // steak
+    BASE+'photo-1555949258-eb67b1ef0ceb?w=120&h=120&q=85&fit=crop',    // pasta
+    BASE+'photo-1565299585323-38d6b0865b47?w=120&h=120&q=85&fit=crop', // tacos
+    BASE+'photo-1510812431401-41d2bd2722f3?w=120&h=120&q=85&fit=crop', // wine
+    BASE+'photo-1529193591184-b1d58069ecdd?w=120&h=120&q=85&fit=crop', // bbq
+    BASE+'photo-1512621776951-a57141f2eefd?w=120&h=120&q=85&fit=crop', // salad
+    BASE+'photo-1578985545062-69928b1d9587?w=120&h=120&q=85&fit=crop', // cake
+    BASE+'photo-1414235077428-338989a2e8c0?w=120&h=120&q=85&fit=crop', // restaurant plate
+    BASE+'photo-1488477304112-4944851de03d?w=120&h=120&q=85&fit=crop', // dessert
+    BASE+'photo-1482049016688-2d3e1b311543?w=120&h=120&q=85&fit=crop', // eggs/brunch
+    BASE+'photo-1432139555190-58524dae6a55?w=120&h=120&q=85&fit=crop', // seafood
+    BASE+'photo-1504674900247-0877df9cc836?w=120&h=120&q=85&fit=crop', // food spread
+  ];
+  const MONEY_IMGS = [
+    BASE+'photo-1554224155-8d04cb21cd6c?w=120&h=120&q=85&fit=crop',    // money
+    BASE+'photo-1621981386829-9b458a15d1d2?w=120&h=120&q=85&fit=crop', // bills
+    BASE+'photo-1553729459-efe14ef6055d?w=120&h=120&q=85&fit=crop',    // coins
+  ];
+  // 4x more food than money
+  const ALL_IMGS = [...FOOD_IMGS,...FOOD_IMGS,...FOOD_IMGS,...FOOD_IMGS,...MONEY_IMGS];
 
   function spawnFloater(container, count = 14) {
     if (!container) return;
     for (let i = 0; i < count; i++) {
-      const s = document.createElement('span');
-      const emoji = ALL_EMOJI[Math.floor(Math.random() * ALL_EMOJI.length)];
-      s.textContent = emoji;
-      s.style.setProperty('--size', (24 + Math.random() * 32) + 'px');
-      s.style.setProperty('--dur', (16 + Math.random() * 16) + 's');
-      s.style.setProperty('--delay', (Math.random() * 18) + 's');
-      s.style.setProperty('--drift', (Math.random() * 200 - 100) + 'px');
-      s.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
-      s.style.setProperty('--op', (0.18 + Math.random() * 0.25).toFixed(2));
-      s.style.left = (Math.random() * 100) + '%';
-      s.classList.add('show');
-      container.appendChild(s);
+      const img = document.createElement('img');
+      img.className = 'floater';
+      img.src = ALL_IMGS[Math.floor(Math.random() * ALL_IMGS.length)];
+      img.alt = '';
+      img.loading = 'lazy';
+      img.onerror = function(){ this.style.display = 'none'; };
+      const size = 70 + Math.random() * 80; // 70–150px circles
+      img.style.setProperty('--size', size + 'px');
+      img.style.setProperty('--dur', (14 + Math.random() * 14) + 's');
+      img.style.setProperty('--delay', (Math.random() * 20) + 's');
+      img.style.setProperty('--drift', (Math.random() * 160 - 80) + 'px');
+      img.style.setProperty('--rot', (Math.random() * 22 - 11) + 'deg'); // subtle tilt only
+      img.style.setProperty('--op', (0.45 + Math.random() * 0.28).toFixed(2));
+      img.style.left = (Math.random() * 92) + '%';
+      img.classList.add('show');
+      container.appendChild(img);
     }
   }
 
   ['bgFloat','bgFloat2','bgFloat3','bgFloat4','bgFloat5'].forEach((id, idx) => {
     const el = document.getElementById(id);
-    spawnFloater(el, idx === 0 ? 18 : 10);
+    spawnFloater(el, idx === 0 ? 20 : 11);
   });
 </script>
 </body>
