@@ -91,7 +91,7 @@
     .hero-vid-bg{
       position:absolute;top:0;left:0;width:100%;height:100%;
       z-index:0;overflow:hidden;pointer-events:none;
-      background:#0a0a0a url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&h=1080&fit=crop&q=85') center/cover no-repeat;
+      background:#0a0a0a url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop&q=85') center/cover no-repeat;
     }
     .hero-vid-bg video{
       position:absolute;top:50%;left:50%;
@@ -124,14 +124,13 @@
     }
     .money-float .bill{
       position:absolute;top:-90px;
-      width:var(--size,90px);height:auto;
+      width:var(--size,90px);
       aspect-ratio:5/2.5;
-      object-fit:cover;
-      border-radius:4px;
       opacity:0;
-      box-shadow:0 10px 28px rgba(0,0,0,.5),0 0 18px rgba(34,197,94,.22);
+      filter:drop-shadow(0 10px 22px rgba(0,0,0,.55));
       animation:money-fall var(--dur,18s) linear var(--delay,0s) infinite;
     }
+    .money-float .bill svg{display:block;width:100%;height:100%}
 
     /* ═══ BUTTONS ═══ */
     .btn-bg-green{
@@ -195,7 +194,7 @@
     .nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 0;transition:all .3s}
     .nav.stuck{background:rgba(10,10,10,.97);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(255,255,255,.06);padding:10px 0}
     .nav-row{display:flex;align-items:center;justify-content:space-between}
-    .nav-logo img{height:42px}
+    .nav-logo img{height:48px}
     .nav-logo-txt{font-size:22px;font-weight:900;letter-spacing:.12em}
     .nav-pill{
       background:var(--wpp);color:#fff;
@@ -221,8 +220,6 @@
       position:relative;z-index:2;
     }
     .hero-left{padding:48px 0;animation:fade-up .7s ease both}
-    .hero-logo{margin-bottom:22px;display:flex;align-items:center;gap:12px}
-    .hero-logo img{height:60px}
 
     .vagas-pill{
       display:inline-flex;align-items:center;gap:10px;
@@ -787,7 +784,7 @@
   <!-- Hero video background (self-hosted, no ads) -->
   <div class="hero-vid-bg">
     <video autoplay muted loop playsinline preload="auto"
-           poster="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&h=1080&fit=crop&q=85">
+           poster="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop&q=85">
       <source src="assets/hero-video.mp4" type="video/mp4">
     </video>
     <div class="hero-vid-overlay"></div>
@@ -801,12 +798,6 @@
 
       <!-- Copy -->
       <div class="hero-left">
-        <div class="hero-logo">
-          <img src="assets/logo-vimex.svg" alt="Vimex Marketing"
-               onerror="this.src='assets/logo-vimex.png';this.onerror=function(){this.style.display='none';this.nextElementSibling.style.display='block'}">
-          <span style="display:none;font-size:30px;font-weight:900;letter-spacing:.12em">VIMEX</span>
-        </div>
-
         <div class="vagas-pill">
           <span class="vagas-dot"></span>
           Vagas limitadas para 2026
@@ -1289,32 +1280,56 @@
     if (el) el.style.display = 'none';
   }, 14000);
 
-  // ═══ Real money bills falling from top of hero ═══
-  const BILL_IMGS = [
-    'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=240&h=120&fit=crop&q=85', // dollar bills
-    'https://images.unsplash.com/photo-1621981386829-9b458a15d1d2?w=240&h=120&fit=crop&q=85', // cash
-    'https://images.unsplash.com/photo-1620266757065-f0aa17075c8e?w=240&h=120&fit=crop&q=85', // bills
-    'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=240&h=120&fit=crop&q=85', // $100 close
-    'https://images.unsplash.com/photo-1607863680198-23d4b2565df0?w=240&h=120&fit=crop&q=85', // money
-    'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=240&h=120&fit=crop&q=85', // hundred
+  // ═══ Real Brazilian Real (R$) bills falling from top of hero ═══
+  const BILLS = [
+    {value:'100', a:'#1e6e85', b:'#0a3a4a'}, // azul (R$ 100)
+    {value:'50',  a:'#8a5520', b:'#3d2510'}, // marrom (R$ 50)
+    {value:'20',  a:'#c8961f', b:'#604c10'}, // amarelo (R$ 20)
+    {value:'10',  a:'#b02525', b:'#5a0d10'}, // vermelho (R$ 10)
+    {value:'5',   a:'#7d3e8a', b:'#3d1c4a'}, // roxo (R$ 5)
+    {value:'2',   a:'#1e5aa8', b:'#0a2d5e'}, // azul escuro (R$ 2)
   ];
+  let billCounter = 0;
+  function buildBill(b){
+    const id = `bg${++billCounter}`;
+    const wrap = document.createElement('div');
+    wrap.className = 'bill';
+    wrap.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 90" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="${b.a}"/>
+          <stop offset="100%" stop-color="${b.b}"/>
+        </linearGradient>
+      </defs>
+      <rect width="200" height="90" rx="6" fill="url(#${id})"/>
+      <rect x="6" y="6" width="188" height="78" rx="3" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="0.7"/>
+      <circle cx="100" cy="45" r="24" fill="rgba(255,255,255,.1)"/>
+      <circle cx="100" cy="45" r="24" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="0.6"/>
+      <text x="100" y="56" text-anchor="middle" fill="#fff" font-family="Georgia, serif" font-size="26" font-weight="800">${b.value}</text>
+      <text x="14" y="22" fill="rgba(255,255,255,.85)" font-size="11" font-weight="bold" font-family="serif">R$</text>
+      <text x="14" y="78" fill="rgba(255,255,255,.85)" font-size="11" font-weight="bold" font-family="serif">${b.value}</text>
+      <text x="186" y="22" text-anchor="end" fill="rgba(255,255,255,.85)" font-size="11" font-weight="bold" font-family="serif">${b.value}</text>
+      <text x="186" y="78" text-anchor="end" fill="rgba(255,255,255,.85)" font-size="11" font-weight="bold" font-family="serif">R$</text>
+      <line x1="40" y1="32" x2="60" y2="32" stroke="rgba(255,255,255,.4)" stroke-width="0.6"/>
+      <line x1="40" y1="36" x2="64" y2="36" stroke="rgba(255,255,255,.4)" stroke-width="0.6"/>
+      <line x1="140" y1="54" x2="160" y2="54" stroke="rgba(255,255,255,.4)" stroke-width="0.6"/>
+      <line x1="136" y1="58" x2="160" y2="58" stroke="rgba(255,255,255,.4)" stroke-width="0.6"/>
+    </svg>`;
+    return wrap;
+  }
   const moneyEl = document.getElementById('moneyFloat');
   if (moneyEl) {
     for (let i = 0; i < 14; i++) {
-      const img = document.createElement('img');
-      img.className = 'bill';
-      img.src = BILL_IMGS[Math.floor(Math.random() * BILL_IMGS.length)];
-      img.alt = '';
-      img.loading = 'lazy';
-      img.onerror = function(){ this.style.display = 'none'; };
-      img.style.setProperty('--size', (70 + Math.random() * 70) + 'px');
-      img.style.setProperty('--dur', (12 + Math.random() * 10) + 's');
-      img.style.setProperty('--delay', (Math.random() * 16) + 's');
-      img.style.setProperty('--drift', (Math.random() * 260 - 130) + 'px');
-      img.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
-      img.style.setProperty('--op', (0.55 + Math.random() * 0.3).toFixed(2));
-      img.style.left = (Math.random() * 95) + '%';
-      moneyEl.appendChild(img);
+      const b = BILLS[Math.floor(Math.random() * BILLS.length)];
+      const el = buildBill(b);
+      el.style.setProperty('--size', (80 + Math.random() * 70) + 'px');
+      el.style.setProperty('--dur', (12 + Math.random() * 10) + 's');
+      el.style.setProperty('--delay', (Math.random() * 16) + 's');
+      el.style.setProperty('--drift', (Math.random() * 260 - 130) + 'px');
+      el.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+      el.style.setProperty('--op', (0.7 + Math.random() * 0.25).toFixed(2));
+      el.style.left = (Math.random() * 95) + '%';
+      moneyEl.appendChild(el);
     }
   }
 </script>
