@@ -112,25 +112,54 @@
         radial-gradient(ellipse 60% 50% at 80% 40%,rgba(255,69,0,.12) 0%,transparent 60%);
     }
 
-    /* ═══ MONEY FLOATERS — real bills falling from top ═══ */
-    @keyframes money-fall{
-      0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0}
-      6%{opacity:var(--op,.6)}
-      94%{opacity:var(--op,.6)}
-      100%{transform:translateY(115vh) translateX(var(--drift,0px)) rotate(var(--rot,540deg));opacity:0}
+    /* ═══ VSL SECTION ═══ */
+    .vsl-sec{
+      background:linear-gradient(180deg,#0a0a0a 0%,#0d0400 50%,#0a0a0a 100%);
+      padding:80px 0;position:relative;overflow:hidden;
     }
-    .money-float{
-      position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;
+    .vsl-sec::before{
+      content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);
+      width:900px;height:600px;
+      background:radial-gradient(ellipse,rgba(255,69,0,.08) 0%,transparent 65%);
+      pointer-events:none;
     }
-    .money-float .bill{
-      position:absolute;top:-90px;
-      width:var(--size,90px);
-      aspect-ratio:5/2.5;
-      opacity:0;
-      filter:drop-shadow(0 10px 22px rgba(0,0,0,.55));
-      animation:money-fall var(--dur,18s) linear var(--delay,0s) infinite;
+    .vsl-inner{max-width:860px;margin:0 auto;position:relative;z-index:2}
+    .vsl-header{text-align:center;margin-bottom:40px}
+    .vsl-title{font-size:clamp(24px,3.8vw,40px);font-weight:900;line-height:1.2;margin-bottom:14px}
+    .vsl-sub{font-size:16px;color:#888;max-width:580px;margin:0 auto;line-height:1.7}
+    .vsl-wrap{
+      position:relative;width:100%;padding-bottom:56.25%;
+      border-radius:20px;overflow:hidden;
+      border:1px solid rgba(255,69,0,.2);
+      box-shadow:0 32px 80px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.04),0 0 80px rgba(255,69,0,.06);
     }
-    .money-float .bill svg{display:block;width:100%;height:100%}
+    .vsl-ph{
+      position:absolute;inset:0;
+      background:linear-gradient(145deg,#100500,#1c0a00);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:18px;cursor:pointer;transition:background .3s;
+    }
+    .vsl-ph:hover{background:linear-gradient(145deg,#180700,#240d00)}
+    .vsl-play-btn{
+      width:84px;height:84px;
+      background:linear-gradient(135deg,var(--orange),var(--orange2));
+      border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:30px;color:#fff;padding-left:6px;
+      box-shadow:0 12px 40px rgba(255,69,0,.5),0 0 0 14px rgba(255,69,0,.1);
+      animation:bounce-soft 2.4s ease-in-out infinite;
+      transition:transform .25s,box-shadow .25s;
+    }
+    .vsl-ph:hover .vsl-play-btn{
+      transform:scale(1.08);
+      box-shadow:0 16px 52px rgba(255,69,0,.7),0 0 0 22px rgba(255,69,0,.14);
+    }
+    .vsl-ph-label{font-size:16px;font-weight:700;color:#ddd}
+    .vsl-ph-meta{font-size:13px;color:#555;display:flex;align-items:center;gap:8px}
+    .vsl-ph-meta i{color:var(--orange2);font-size:12px}
+    .vsl-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .vsl-foot{text-align:center;margin-top:28px;display:flex;flex-direction:column;align-items:center;gap:14px}
+    .vsl-foot-note{font-size:14px;color:#555}
 
     /* ═══ BUTTONS ═══ */
     .btn-bg-green{
@@ -790,9 +819,6 @@
     <div class="hero-vid-overlay"></div>
   </div>
 
-  <!-- Floating money bills -->
-  <div class="money-float" id="moneyFloat"></div>
-
   <div class="container" style="position:relative;z-index:3">
     <div class="hero-wrap">
 
@@ -800,7 +826,7 @@
       <div class="hero-left">
         <div class="vagas-pill">
           <span class="vagas-dot"></span>
-          Vagas limitadas para 2026
+          Apenas 3 vagas abertas · Junho 2026
         </div>
 
         <h1 class="hero-title">
@@ -808,23 +834,23 @@
           <em>Vire referência.</em>
         </h1>
         <p class="hero-sub">
-          Parceiro estratégico do seu restaurante — não mais uma agência.
+          Enquanto o concorrente ao lado lota, alguns donos ainda esperam. A diferença não é sorte — é estratégia.
         </p>
 
         <div class="hero-mini-bar">
-          <span class="mb"><i class="fas fa-check"></i> Diagnóstico grátis</span>
+          <span class="mb"><i class="fas fa-check"></i> Diagnóstico gratuito</span>
           <span class="mb"><i class="fas fa-check"></i> Sem compromisso</span>
-          <span class="mb"><i class="fas fa-check"></i> Especialista no setor</span>
+          <span class="mb"><i class="fas fa-check"></i> Especialista em restaurantes</span>
         </div>
 
         <div class="hero-cta-stack">
           <a href="https://wa.me/5519997145430?text=Tenho%20um%20restaurante%20e%20quero%20um%20diagn%C3%B3stico%20gratuito%20para%20faturar%20mais!"
              target="_blank" class="btn-bg-green">
             <i class="fab fa-whatsapp"></i>
-            Quero acelerar meu restaurante!
+            Quero acelerar meu restaurante
           </a>
           <span class="hero-cta-note">
-            <i class="fas fa-bolt"></i> Resposta em até 1 hora
+            <i class="fas fa-bolt"></i> Resposta em menos de 1 hora · Sem compromisso
           </span>
         </div>
       </div>
@@ -849,6 +875,49 @@
           <span class="dot"></span>
           <span><i class="fas fa-utensils"></i>+50 restaurantes</span>
         </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VSL SECTION ═══ -->
+<section class="vsl-sec" id="aula-gratuita">
+  <div class="container">
+    <div class="vsl-inner">
+
+      <div class="vsl-header">
+        <div class="tag tag-orange" style="justify-content:center;display:inline-flex;margin-bottom:18px">
+          <i class="fas fa-camera"></i> Aula gratuita
+        </div>
+        <h2 class="vsl-title">
+          Como ter <span class="hl">boas fotos</span> pro seu cardápio<br>com ferramentas de IA
+        </h2>
+        <p class="vsl-sub">
+          Restaurantes que investem em fotos de cardápio profissionais vendem até 3× mais. Descubra como fazer isso hoje — com inteligência artificial, sem fotógrafo e sem custo.
+        </p>
+      </div>
+
+      <div class="vsl-wrap">
+        <!-- Placeholder: substituir VIDEO_ID pelo ID do YouTube quando disponível -->
+        <div class="vsl-ph" id="vslPh" onclick="loadVSL()">
+          <div class="vsl-play-btn"><i class="fas fa-play"></i></div>
+          <div class="vsl-ph-label">Assistir aula gratuita</div>
+          <div class="vsl-ph-meta"><i class="fas fa-clock"></i> ~10 min · Sem cadastro · 100% gratuito</div>
+        </div>
+        <iframe id="vslFrame" style="display:none"
+          src=""
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="vsl-foot">
+        <p class="vsl-foot-note">Após assistir, você vai querer aplicar isso no seu cardápio ainda hoje.</p>
+        <a href="https://wa.me/5519997145430?text=Tenho%20um%20restaurante%20e%20quero%20um%20diagn%C3%B3stico%20gratuito%20para%20faturar%20mais!"
+           target="_blank" class="mini-cta" style="font-size:15px;padding:14px 28px">
+          <i class="fab fa-whatsapp" style="font-size:18px"></i> Quero o diagnóstico grátis
+        </a>
       </div>
 
     </div>
@@ -906,16 +975,16 @@
       <div>
         <div class="tag tag-orange"><i class="fas fa-fire"></i> Diagnóstico gratuito</div>
         <h2 class="form-pitch-title">
-          Descubra o que falta<br>pro seu <span class="hl">restaurante decolar.</span>
+          Seu restaurante tem potencial.<br>A questão é: <span class="hl">quanto tempo vai esperar?</span>
         </h2>
         <p class="form-pitch-sub">
-          Análise honesta do seu negócio — direto ao ponto, sem promessa vazia.
+          Análise honesta, personalizada e gratuita. Sem papo de agência — direto ao ponto.
         </p>
         <ul class="fplist">
-          <li><i class="fas fa-check-circle"></i> Análise do seu cardápio e presença digital</li>
-          <li><i class="fas fa-check-circle"></i> Identificação dos maiores gargalos</li>
-          <li><i class="fas fa-check-circle"></i> Plano de ação personalizado</li>
-          <li><i class="fas fa-check-circle"></i> 100% gratuito — sem pegadinha</li>
+          <li><i class="fas fa-check-circle"></i> Diagnóstico do seu cardápio e presença digital</li>
+          <li><i class="fas fa-check-circle"></i> Identificação dos maiores gargalos de crescimento</li>
+          <li><i class="fas fa-check-circle"></i> Plano de ação claro e personalizado</li>
+          <li><i class="fas fa-check-circle"></i> 100% gratuito · Apenas 3 vagas disponíveis</li>
         </ul>
       </div>
 
@@ -965,8 +1034,8 @@
 <!-- ═══ PAIN ═══ -->
 <section class="pain sp">
   <div class="container">
-    <div class="tag tag-orange"><i class="fas fa-exclamation-circle"></i> Você se identifica?</div>
-    <h2 class="sec-title">Seu restaurante <span class="hl">passa por isso?</span></h2>
+    <div class="tag tag-orange"><i class="fas fa-exclamation-circle"></i> Reconhece algum?</div>
+    <h2 class="sec-title">Esses problemas custam <span class="hl">clientes todo dia.</span></h2>
     <div class="pain-grid">
       <div class="pain-card"><div class="pain-icn"><i class="fas fa-chair"></i></div><h3>Mesas vazias no pico</h3></div>
       <div class="pain-card"><div class="pain-icn"><i class="fas fa-mobile-screen"></i></div><h3>Redes sem retorno</h3></div>
@@ -1170,14 +1239,16 @@
 <!-- ═══ FINAL CTA ═══ -->
 <section class="fcta sp">
   <div class="container fcta-inner">
-    <h2 class="fcta-title">Seu restaurante tem tudo<br>para ser <span class="hl">o mais comentado.</span></h2>
-    <p class="fcta-sub">Diagnóstico gratuito. Sem compromisso. Pode ser o seu ponto de virada.</p>
+    <h2 class="fcta-title">O restaurante mais comentado<br>da sua cidade <span class="hl">pode ser o seu.</span></h2>
+    <p class="fcta-sub">Diagnóstico gratuito · Sem compromisso · Resposta em menos de 1 hora.</p>
     <a href="https://wa.me/5519997145430?text=Tenho%20um%20restaurante%20e%20quero%20um%20diagn%C3%B3stico%20gratuito%20para%20faturar%20mais!"
        target="_blank" class="btn-bg-green" style="font-size:18px;padding:22px 48px">
       <i class="fab fa-whatsapp"></i>
-      Quero meu diagnóstico agora!
+      Garantir meu diagnóstico gratuito
     </a>
-    <p style="font-size:14px;color:#444;margin-top:18px"><i class="fas fa-clock"></i> Resposta em até 1 hora</p>
+    <p style="font-size:13px;color:#444;margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px">
+      <i class="fas fa-shield-halved" style="color:var(--orange2)"></i> Vagas limitadas — 3 abertas esta semana
+    </p>
     <div class="guarantees">
       <div class="gua"><div class="gua-icn"><i class="fas fa-bullseye"></i></div><div class="gua-title">Estratégia única</div><div class="gua-sub">Pro seu negócio</div></div>
       <div class="gua"><div class="gua-icn"><i class="fas fa-handshake"></i></div><div class="gua-title">Parceiro real</div><div class="gua-sub">Não agência genérica</div></div>
@@ -1280,57 +1351,12 @@
     if (el) el.style.display = 'none';
   }, 14000);
 
-  // ═══ Real Brazilian Real (R$) bills falling from top of hero ═══
-  const BILLS = [
-    {value:'100', a:'#1e6e85', b:'#0a3a4a'}, // azul (R$ 100)
-    {value:'50',  a:'#8a5520', b:'#3d2510'}, // marrom (R$ 50)
-    {value:'20',  a:'#c8961f', b:'#604c10'}, // amarelo (R$ 20)
-    {value:'10',  a:'#b02525', b:'#5a0d10'}, // vermelho (R$ 10)
-    {value:'5',   a:'#7d3e8a', b:'#3d1c4a'}, // roxo (R$ 5)
-    {value:'2',   a:'#1e5aa8', b:'#0a2d5e'}, // azul escuro (R$ 2)
-  ];
-  let billCounter = 0;
-  function buildBill(b){
-    const id = `bg${++billCounter}`;
-    const wrap = document.createElement('div');
-    wrap.className = 'bill';
-    wrap.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 90" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="${b.a}"/>
-          <stop offset="100%" stop-color="${b.b}"/>
-        </linearGradient>
-      </defs>
-      <rect width="200" height="90" rx="6" fill="url(#${id})"/>
-      <rect x="6" y="6" width="188" height="78" rx="3" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="0.7"/>
-      <circle cx="100" cy="45" r="24" fill="rgba(255,255,255,.1)"/>
-      <circle cx="100" cy="45" r="24" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="0.6"/>
-      <text x="100" y="56" text-anchor="middle" fill="#fff" font-family="Georgia, serif" font-size="26" font-weight="800">${b.value}</text>
-      <text x="14" y="22" fill="rgba(255,255,255,.85)" font-size="11" font-weight="bold" font-family="serif">R$</text>
-      <text x="14" y="78" fill="rgba(255,255,255,.85)" font-size="11" font-weight="bold" font-family="serif">${b.value}</text>
-      <text x="186" y="22" text-anchor="end" fill="rgba(255,255,255,.85)" font-size="11" font-weight="bold" font-family="serif">${b.value}</text>
-      <text x="186" y="78" text-anchor="end" fill="rgba(255,255,255,.85)" font-size="11" font-weight="bold" font-family="serif">R$</text>
-      <line x1="40" y1="32" x2="60" y2="32" stroke="rgba(255,255,255,.4)" stroke-width="0.6"/>
-      <line x1="40" y1="36" x2="64" y2="36" stroke="rgba(255,255,255,.4)" stroke-width="0.6"/>
-      <line x1="140" y1="54" x2="160" y2="54" stroke="rgba(255,255,255,.4)" stroke-width="0.6"/>
-      <line x1="136" y1="58" x2="160" y2="58" stroke="rgba(255,255,255,.4)" stroke-width="0.6"/>
-    </svg>`;
-    return wrap;
-  }
-  const moneyEl = document.getElementById('moneyFloat');
-  if (moneyEl) {
-    for (let i = 0; i < 14; i++) {
-      const b = BILLS[Math.floor(Math.random() * BILLS.length)];
-      const el = buildBill(b);
-      el.style.setProperty('--size', (80 + Math.random() * 70) + 'px');
-      el.style.setProperty('--dur', (12 + Math.random() * 10) + 's');
-      el.style.setProperty('--delay', (Math.random() * 16) + 's');
-      el.style.setProperty('--drift', (Math.random() * 260 - 130) + 'px');
-      el.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
-      el.style.setProperty('--op', (0.7 + Math.random() * 0.25).toFixed(2));
-      el.style.left = (Math.random() * 95) + '%';
-      moneyEl.appendChild(el);
-    }
+  // VSL: trocar VIDEO_ID pelo ID real do YouTube quando disponível
+  function loadVSL() {
+    document.getElementById('vslPh').style.display = 'none';
+    const f = document.getElementById('vslFrame');
+    f.src = 'https://www.youtube.com/embed/VIDEO_ID_AQUI?autoplay=1&rel=0';
+    f.style.display = 'block';
   }
 </script>
 </body>
