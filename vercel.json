@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "outputDirectory": "restaurantes",
+  "builds": [
+    { "src": "restaurantes/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/restaurantes/$1" }
+  ]
+}
