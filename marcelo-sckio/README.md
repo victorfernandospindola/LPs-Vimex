@@ -53,15 +53,31 @@ impacto no faturamento = ganho anual ÷ (faturamento mensal × 12)
 Nenhum número de resultado de cliente foi inventado. A única afirmação de resultado é a
 fornecida no briefing ("dezenas de milhões de reais"), sem percentuais ou cases.
 
-### 4. Fotografia industrial
-O retrato de Marcelo é a foto real enviada (recortada do fundo, sem qualquer alteração de rosto).
+### 4. Retrato do Marcelo (composição)
+O rosto e o corpo são a foto real enviada — sem nenhuma alteração de traços, expressão ou pose.
+O que foi feito: recorte do fundo original, correção de luz para casar com uma cena escura,
+sombra de contato e uma luz de recorte quente nas bordas.
 
-As imagens de contexto industrial são **fotos reais do Pexels** (licença livre, inclusive
-comercial, sem atribuição obrigatória), carregadas pelo CDN com `srcset`, `loading="lazy"` e
-tratamento gráfico (dessaturação + máscara grafite) para manter a unidade visual.
-O ambiente de desenvolvimento não tinha acesso de rede ao Pexels, então **as imagens não
-puderam ser conferidas visualmente** — vale abrir os links abaixo e trocar o que não estiver
-à altura (o ideal, quando possível, é usar fotos reais de indústrias atendidas):
+Esse recorte é exibido sobre um **fundo de galpão industrial desfocado**, no estilo do modo retrato
+do iPhone (assunto nítido, ambiente fora de foco). Esse fundo é um **arquivo gerado**
+(`assets/img/fabrica-retrato-*.webp`), não a fotografia de uma fábrica real — no nível de desfoque
+usado, ele cumpre o papel de ambiente sem fingir ser um registro de uma planta específica.
+
+Trocar por uma foto real de fábrica é uma linha de CSS: em `.cena`, substitua a URL de
+`background-image`. Mesma coisa para as seções escuras (`.impacto`, `.visita`) e para o retrato
+da seção de autoridade (`.cena--escura`).
+
+**Braços cruzados:** não foi feito. Mudar a pose exigiria gerar um corpo que não existe na foto,
+e isso é recriar a imagem de uma pessoa real. Para ter essa pose: basta uma foto do Marcelo de
+braços cruzados (celular serve, de frente, luz uniforme, fundo qualquer) — o recorte e o mesmo
+tratamento de cena são refeitos em minutos.
+
+### 5. Fotografia industrial das seções
+Fotos reais do Pexels (licença livre, inclusive comercial, sem atribuição obrigatória), carregadas
+pelo CDN com `srcset`, `loading="lazy"` e tratamento gráfico para manter a unidade visual.
+O ambiente de desenvolvimento não tinha acesso de rede ao Pexels, então **as imagens não puderam
+ser conferidas visualmente** — vale abrir os links abaixo e trocar o que não estiver à altura
+(o ideal, quando possível, é usar fotos reais de indústrias atendidas):
 
 | Seção | Foto | Link |
 |---|---|---|
@@ -71,8 +87,9 @@ puderam ser conferidas visualmente** — vale abrir os links abaixo e trocar o q
 | Campinas e região | Industrial Robot Arm in a Manufacturing Facility | https://www.pexels.com/photo/industrial-robot-arm-in-a-manufacturing-facility-34207359/ |
 | Agendar visita | Woman Working in a Factory | https://www.pexels.com/photo/woman-working-in-a-factory-23232403/ |
 
-Se alguma imagem externa falhar, o bloco cai para um fundo gráfico sóbrio (classe `is-broken`) —
-nunca aparece ícone de imagem quebrada.
+Nas seções escuras (impacto e visita), o fundo de fábrica gerado fica **por baixo** da foto do
+Pexels: se a foto externa não carregar, a seção continua com ambiente industrial em vez de um
+retângulo chapado.
 
 ## Performance
 

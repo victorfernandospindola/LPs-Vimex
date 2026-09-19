@@ -30,7 +30,8 @@
 
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/img/marcelo-hero-560.webp" imagesrcset="assets/img/marcelo-hero-400.webp 400w, assets/img/marcelo-hero-560.webp 560w, assets/img/marcelo-hero-788.webp 788w" imagesizes="(min-width: 1024px) 490px, (min-width: 760px) 420px, 92vw" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/marcelo-cena-620.webp" imagesrcset="assets/img/marcelo-cena-420.webp 420w, assets/img/marcelo-cena-620.webp 620w, assets/img/marcelo-cena-900.webp 900w" imagesizes="(min-width: 1024px) 520px, (min-width: 760px) 440px, 94vw" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/fabrica-retrato-1200.webp">
 <link rel="preconnect" href="https://images.pexels.com" crossorigin>
 <link rel="stylesheet" href="assets/css/styles.css">
 
@@ -72,7 +73,7 @@
       "@id": "https://www.marcelosckio.com.br/#marcelo",
       "name": "Marcelo Sckio",
       "jobTitle": "Consultor em Processos Produtivos e Eficiência Operacional",
-      "image": "https://www.marcelosckio.com.br/assets/img/marcelo-hero-788.webp",
+      "image": "https://www.marcelosckio.com.br/assets/img/marcelo-cena-900.webp",
       "telephone": "+5519988364023",
       "knowsAbout": [
         "Melhoria de processos produtivos",
@@ -136,21 +137,21 @@
         <em>Precisa perder menos.</em>
       </h1>
 
-      <div class="hero__figure reveal">
-        <div class="portrait">
-          <img
-            src="assets/img/marcelo-hero-560.webp"
-            srcset="assets/img/marcelo-hero-400.webp 400w, assets/img/marcelo-hero-560.webp 560w, assets/img/marcelo-hero-788.webp 788w"
-            sizes="(min-width: 1024px) 490px, (min-width: 760px) 420px, 92vw"
-            width="788" height="1290"
-            alt="Marcelo Sckio, consultor em processos produtivos e eficiência operacional"
+      <figure class="hero__figure reveal">
+        <div class="cena">
+          <img class="cena__figura"
+            src="assets/img/marcelo-cena-620.webp"
+            srcset="assets/img/marcelo-cena-420.webp 420w, assets/img/marcelo-cena-620.webp 620w, assets/img/marcelo-cena-900.webp 900w"
+            sizes="(min-width: 1024px) 520px, (min-width: 760px) 440px, 94vw"
+            width="1134" height="1393"
+            alt="Marcelo Sckio, consultor em processos produtivos, em ambiente industrial"
             fetchpriority="high" decoding="async">
         </div>
-        <p class="portrait__caption">
+        <figcaption class="cena__legenda">
           <strong>Marcelo Sckio</strong>
-          Consultoria em processos produtivos, produtividade e lucratividade industrial
-        </p>
-      </div>
+          <span>Consultoria em processos produtivos, produtividade e lucratividade industrial</span>
+        </figcaption>
+      </figure>
 
       <p class="hero__sub reveal">
         Identificamos desperdícios, gargalos e ineficiências no processo produtivo para transformar a sua operação em mais margem e lucratividade.
@@ -165,10 +166,24 @@
         <a class="btn btn--ghost" href="#metodologia">Conhecer a metodologia</a>
       </div>
 
-      <p class="hero__proof reveal">
-        <span class="hero__proof-rule" aria-hidden="true"></span>
-        Dezenas de milhões de reais em resultados gerados para empresas e indústrias através da melhoria de processos.
-      </p>
+    </div>
+  </section>
+
+  <!-- ============ CREDENCIAIS ============ -->
+  <section class="credenciais" aria-label="Credenciais de atuação">
+    <div class="shell credenciais__grid reveal-stagger">
+      <div class="credencial">
+        <strong>Dezenas de milhões</strong>
+        <span>em reais de resultados gerados para empresas e indústrias através da melhoria de processos</span>
+      </div>
+      <div class="credencial">
+        <strong>Campinas e região</strong>
+        <span>atendimento presencial, com análise feita dentro da operação</span>
+      </div>
+      <div class="credencial">
+        <strong>Médias e grandes indústrias</strong>
+        <span>operações de alto volume, com processos e cadeias complexas</span>
+      </div>
     </div>
   </section>
 
@@ -314,12 +329,12 @@
   <section class="section section--marcelo" id="marcelo">
     <div class="shell autoridade">
       <div class="autoridade__media reveal">
-        <div class="portrait portrait--dark">
-          <img
-            src="assets/img/marcelo-retrato-560.webp"
-            srcset="assets/img/marcelo-retrato-360.webp 360w, assets/img/marcelo-retrato-560.webp 560w, assets/img/marcelo-retrato-750.webp 750w"
-            sizes="(min-width: 1024px) 420px, (min-width: 640px) 360px, 92vw"
-            width="750" height="1110" loading="lazy" decoding="async"
+        <div class="cena cena--escura">
+          <img class="cena__figura"
+            src="assets/img/marcelo-cena-420.webp"
+            srcset="assets/img/marcelo-cena-420.webp 420w, assets/img/marcelo-cena-620.webp 620w"
+            sizes="(min-width: 1024px) 420px, (min-width: 640px) 360px, 88vw"
+            width="1134" height="1393" loading="lazy" decoding="async"
             alt="Marcelo Sckio, consultor especializado em melhoria de processos produtivos">
         </div>
       </div>
